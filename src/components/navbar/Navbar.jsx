@@ -5,6 +5,7 @@ import { BsFillCloudSunFill } from 'react-icons/bs'
 import { FiSun } from 'react-icons/fi'
 import myContext from '../../context/data/myContext'
 import { RxCross2 } from 'react-icons/rx'
+import hyperlogo from '../../assets/hyperlogo.png'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -100,8 +101,8 @@ export default function Navbar() {
 
       {/* desktop  */}
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8" style={{ backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '', color: mode === 'dark' ? 'white' : '', }}>
-          Get free delivery on orders over ₹300
+        <p className="flex h-10 items-center justify-center bg-[#013e72] px-4 text-sm font-medium text-white sm:px-6 lg:px-8" style={{ backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '', color: mode === 'dark' ? 'white' : '', }}>
+          Get free delivery on orders over ₹1000
         </p>
 
         <nav aria-label="Top" className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
@@ -123,7 +124,8 @@ export default function Navbar() {
               <div className="ml-4 flex lg:ml-0">
                 <Link to={'/'} className='flex'>
                   <div className="flex ">
-                    <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }}>E-Bharat</h1>
+                    <img src={hyperlogo} className='px-2 py-1 border-e-red-500 h-20'/>
+                    {/* <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h1> */}
                   </div>
                 </Link>
               </div>
@@ -153,7 +155,7 @@ export default function Navbar() {
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
                     />
-                    <span className="ml-3 block text-sm font-medium" style={{ color: mode === 'dark' ? 'white' : '', }}>INDIA</span>
+                    <span className="ml-3 block text-sm font-medium" style={{ color: mode === 'dark' ? 'white' : '', }}>Nepal</span>
                   </a>
                 </div>
                 <div className="hidden lg:ml-8 lg:flex">
