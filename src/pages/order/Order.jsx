@@ -4,11 +4,10 @@ import myContext from '../../context/data/myContext'
 
 const Order = () => {
     const context = useContext(myContext)
-    const {name, rollno} = context
+    // const {name, rollno} = context
   return (
     <Layout>
-        <h1>Name: {name}</h1>
-        <h1>RollNo: {rollno}</h1>
+        Order
     </Layout>
   )
 }
