@@ -15,6 +15,7 @@ import UpdateProduct from './pages/admin/page/UpdateProduct'
 
 
 const App = () => {
+  // This is a main branch
   return (
     <MyState>
       <Router>
@@ -29,7 +30,7 @@ const App = () => {
           <Route path='/addproduct' element={<AddProduct />} />
           <Route path='/updateproduct' element={<UpdateProduct />} />
 
-          <Route path='/*' element={<NoPage />} />
+          <Route path='/*' element={<NoPage />} git/>
         </Routes>
       </Router>
     </MyState>
