@@ -84,12 +84,12 @@ export default function Navbar() {
 
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
-                    <img
+                    {/* <img
                       src="img/indiaflag.png"
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>INDIA</span>
+                    /> */}
+                    <span className="ml-3 block text-base font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>Nepal</span>
                     <span className="sr-only">, change currency</span>
                   </a>
                 </div>
@@ -150,11 +150,11 @@ export default function Navbar() {
 
                 <div className="hidden lg:ml-8 lg:flex">
                   <a href="#" className="flex items-center text-gray-700 ">
-                    <img
+                    {/* <img
                       src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
-                    />
+                    /> */}
                     <span className="ml-3 block text-sm font-medium" style={{ color: mode === 'dark' ? 'white' : '', }}>Nepal</span>
                   </a>
                 </div>
