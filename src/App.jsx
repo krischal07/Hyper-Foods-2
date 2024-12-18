@@ -15,7 +15,7 @@ import UpdateProduct from './pages/admin/page/UpdateProduct'
 
 
 const App = () => {
-  // This is arpit branch hjkhjkhvgkjhui
+  // This is arpit
   return (
     <MyState>
       <Router>
