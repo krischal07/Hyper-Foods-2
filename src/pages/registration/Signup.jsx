@@ -11,14 +11,14 @@ function Signup() {
                 <div>
                     <input type="email"
                         name='email'
-                        className=' bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
+                        className=' bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-gray-500 outline-none'
                         placeholder='Email'
                     />
                 </div>
                 <div>
                     <input
                         type="password"
-                        className=' bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
+                        className=' bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-gray-500 outline-none'
                         placeholder='Password'
                     />
                 </div>
