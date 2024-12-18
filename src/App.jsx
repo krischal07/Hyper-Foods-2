@@ -11,11 +11,12 @@ import Signup from './pages/registration/Signup'
 import Productinf from './pages/productInfo/Productinf'
 import AddProduct from './pages/admin/page/AddProduct'
 import UpdateProduct from './pages/admin/page/UpdateProduct'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const App = () => {
-  // This is arpit branch hjkhjkhvgkjhui
+
   return (
     <MyState>
       <Router>
@@ -30,8 +31,9 @@ const App = () => {
           <Route path='/addproduct' element={<AddProduct />} />
           <Route path='/updateproduct' element={<UpdateProduct />} />
 
-          <Route path='/*' element={<NoPage />} />
+          <Route path='/*' element={<NoPage />} git/>
         </Routes>
+        <ToastContainer />
       </Router>
     </MyState>
    
