@@ -58,7 +58,7 @@ function Signup() {
             <div>
                <input type="text"
                   name='name'
-                  className='bg-white-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
+                  className='bg-white-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-gray-500 outline-none'
                   placeholder='Name'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -67,7 +67,7 @@ function Signup() {
             <div>
                <input type="email"
                   name='email'
-                  className='bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
+                  className='bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-gray-500 outline-none'
                   placeholder='Email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -76,7 +76,7 @@ function Signup() {
             <div>
                <input
                   type="password"
-                  className='bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
+                  className='bg-white-100 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-gray-500 outline-none'
                   placeholder='Password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
