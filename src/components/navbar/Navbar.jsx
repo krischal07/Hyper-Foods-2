@@ -7,6 +7,7 @@ import myContext from '../../context/data/myContext'
 import { RxCross2 } from 'react-icons/rx'
 import hyperlogo from '../../assets/hyperlogo.png'
 
+// 2:14:30
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
