@@ -14,7 +14,7 @@ function Signup() {
 
    const context = useContext(myContext)
    const { loading, setLoading } = context
-
+    
    const signup = async () => {
       setLoading(true)
       console.log(name, email, password)
