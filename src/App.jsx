@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const App = () => {
-  // THis is krischal branch
+  
   return (
     <MyState>
       <Router>
