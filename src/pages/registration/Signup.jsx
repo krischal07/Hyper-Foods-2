@@ -58,7 +58,7 @@ function Signup() {
             <div>
                <input type="text"
                   name='name'
-                  className='bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
+                  className='bg-white-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-500 outline-none'
                   placeholder='Name'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -84,7 +84,7 @@ function Signup() {
             </div>
             <div className='flex justify-center mb-3'>
                <button
-                  className='bg-red-500 w-full text-white font-bold px-2 py-2 rounded-lg'
+                  className='bg-blue-950 w-full text-white font-bold px-2 py-2 rounded-lg'
                   onClick={signup}>
                   Signup
                </button>
