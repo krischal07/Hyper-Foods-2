@@ -8,7 +8,7 @@ import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import Loader from '../../components/loader/Loader'
 
 function Signup() {
-
+//changed
 
    const [name, setName] = useState("")
    const [email, setEmail] = useState("")
