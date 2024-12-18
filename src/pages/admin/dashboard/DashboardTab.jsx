@@ -24,19 +24,19 @@ function DashboardTab() {
                     <Tabs defaultIndex={0} className=" " >
                         <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-2 text-center gap-4   md:justify-center mb-10 ">
                             <Tab>
-                                <button type="button" className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] ">
+                                <button type="button" className="font-medium border-b-2 hover:shadow-blue-600 border-black-500 text-black-500 rounded-lg text-xl shadow-[inset_0_0_3px_rgba(0,0,0,0.1)]  px-5 py-1.5 text-center bg-[#605d5d12] ">
                                     <div className="flex gap-2 items-center">
                                         <MdOutlineProductionQuantityLimits />Products</div> </button>
                             </Tab>
                             <Tab>
-                                <button type="button" className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center ">
+                                <button type="button" className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_3px_rgba(0,0,0,0.1)]    px-5 py-1.5 text-center ">
                                     <div className="flex gap-2 items-center">
                                         <AiFillShopping /> Order
                                     </div>
                                 </button>
                             </Tab>
                             <Tab>
-                                <button type="button" className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center ">
+                                <button type="button" className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_3px_rgba(0,0,0,0.1)]   px-5 py-1.5 text-center ">
                                     <div className="flex gap-2 items-center">
                                         <FaUser /> Users
                                     </div>
@@ -46,11 +46,11 @@ function DashboardTab() {
                         {/* product  */}
                         <TabPanel>
                             <div className='  px-4 md:px-0 mb-16'>
-                                <h1 className=' text-center mb-5 text-3xl font-semibold underline' style={{ color: mode === 'dark' ? 'white' : '' }}>Product Details</h1>
+                                <h1 className=' text-center mb-5 text-3xl font-semibold underline text-blue-700' style={{ color: mode === 'dark' ? 'white' : '' }}>Product Details</h1>
                                 <div className=" flex justify-end">
                                     <button
                                         type="button"
-                                        className="focus:outline-none text-white bg-pink-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} > <div className="flex gap-2 items-center">
+                                        className="focus:outline-none text-white bg-pink-600 shadow-[inset_0_0_2px_rgba(0,0,0,0.1)] border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} > <div className="flex gap-2 items-center">
                                             Add Product <FaCartPlus size={20} />
                                         </div></button>
                                 </div>
@@ -93,13 +93,13 @@ function DashboardTab() {
                                                     Title
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    ₹100
+                                                    Rs. 100
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    pots
+                                                    Chips & Crips
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    12 Aug 2019
+                                                    12/18/2024
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className=" flex gap-2">

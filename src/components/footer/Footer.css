@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playwrite+GB+J+Guides:ital@0;1&display=swap");
+
+.footer-main{
+    background-color:#013e72;
+    height: 15vh;
+    display: flex; 
+   justify-content: center;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.footer-copyright{
+    color: rgb(255, 255, 255);
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+    /* text-align: center; */
+    /* background-color: antiquewhite; */
+    /* margin-left: 300px;
+    margin-bottom: 5px; */
+    margin: auto;
+    font-family: "poppins";
+}

@@ -1,3 +1,5 @@
+import { someModule } from 'some-package';
+
 const flowbite = require("flowbite-react/tailwind");
 
 /** @type {import('tailwindcss').Config} */
