@@ -15,7 +15,7 @@ import UpdateProduct from './pages/admin/page/UpdateProduct'
 
 
 const App = () => {
-  // This is a main branch
+// This is the main
   return (
     <MyState>
       <Router>
