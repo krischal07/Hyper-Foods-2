@@ -60,7 +60,7 @@ const myState = (props) => {
       }
    }
 
-   const [product, setProduct] = useState({})
+   const [product, setProduct] = useState([])
    const getProductData = async ()=>{
     setLoading(true)
     try{
