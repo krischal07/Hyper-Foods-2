@@ -1,10 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import myContext from "../../context/data/myContext";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
+import { toast } from "react-toastify";
 function ProductCard() {
   const context = useContext(myContext);
   const { mode, product } = context;
-  console.log(product);
+  // console.log(product);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart);
+  console.log("Cartitem", cartItems);
+
+  const addCart = (product) => {
+    console.log("Adding product to cart:", product);
+
+    dispatch(addToCart(product));
+    toast.success("Added to cart successfully");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-8 md:py-16 mx-auto">
@@ -29,6 +46,7 @@ function ProductCard() {
                     backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
                     color: mode === "dark" ? "white" : "",
                   }}
+                  key={index}
                 >
                   <div className="flex justify-center cursor-pointer">
                     <img
@@ -61,6 +79,7 @@ function ProductCard() {
                       <button
                         type="button"
                         className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
+                        onClick={() => addCart(item)}
                       >
                         Add To Cart
                       </button>
