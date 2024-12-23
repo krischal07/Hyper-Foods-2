@@ -19,12 +19,12 @@ function ProductCard() {
                                 <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src="https://dummyimage.com/720x400" alt="blog" />
                             </div>
                             <div className="p-5 border-t-2">
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
+                                <h2 className="tracking-widest text-xs title-font font-medium text-red-900 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
                                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>Delicious</h1>
                                 {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                                 <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs. 500</p>
                                 <div className=" flex justify-center">
-                                    <button type="button" className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
+                                    <button type="button" className="focus:outline-none text-white bg-blue-800 hover:bg-red-500 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
 
                                 </div>
                             </div>
@@ -38,12 +38,12 @@ function ProductCard() {
                                 <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src="https://dummyimage.com/720x400" alt="blog" />
                             </div>
                             <div className="p-5 border-t-2">
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
+                                <h2 className="tracking-widest text-xs title-font font-medium text-red-900 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
                                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>Delicious</h1>
                                 {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                                 <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs. 500</p>
                                 <div className=" flex justify-center">
-                                    <button type="button" className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
+                                    <button type="button" className="focus:outline-none text-white bg-blue-800 hover:bg-red-500 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
 
                                 </div>
                             </div>
@@ -57,12 +57,12 @@ function ProductCard() {
                                 <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src="https://dummyimage.com/720x400" alt="blog" />
                             </div>
                             <div className="p-5 border-t-2">
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
+                                <h2 className="tracking-widest text-xs title-font font-medium text-red-900 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
                                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>Delicious</h1>
                                 {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                                 <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs. 500</p>
                                 <div className=" flex justify-center">
-                                    <button type="button" className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
+                                    <button type="button" className="focus:outline-none text-white bg-blue-800 hover:bg-red-500 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
 
                                 </div>
                             </div>
@@ -76,12 +76,12 @@ function ProductCard() {
                                 <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src="https://dummyimage.com/720x400" alt="blog" />
                             </div>
                             <div className="p-5 border-t-2">
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
+                                <h2 className="tracking-widest text-xs title-font font-medium text-red-900 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Hyper Foods</h2>
                                 <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>Delicious</h1>
                                 {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                                 <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs. 500</p>
                                 <div className=" flex justify-center">
-                                    <button type="button" className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
+                                    <button type="button" className="focus:outline-none text-white bg-blue-800 hover:bg-red-500 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2">Add To Cart</button>
 
                                 </div>
                             </div>
