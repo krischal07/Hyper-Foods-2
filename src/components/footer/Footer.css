@@ -1,23 +1,93 @@
-@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playwrite+GB+J+Guides:ital@0;1&display=swap");
-
-.footer-main{
-    background-color:#013e72;
-    height: 15vh;
-    display: flex; 
-   justify-content: center;
-    margin: auto;
+ .footer-main {
+    background-color: #013e72; 
+    color: #fff; 
+    text-align: center; 
+    height: 20vh; 
+    position: relative; 
     border-radius: 10px;
 }
 
-.footer-copyright{
-    color: rgb(255, 255, 255);
+.footer-logo {
     display: flex;
-    /* justify-content: flex-end; */
-    align-items: flex-end;
-    /* text-align: center; */
-    /* background-color: antiquewhite; */
-    /* margin-left: 300px;
-    margin-bottom: 5px; */
-    margin: auto;
-    font-family: "poppins";
+    align-items: center;
 }
+  
+.footer-logo-img {
+    height: 20vh;
+    margin-right: 2vw;  
+}
+
+.footer-social {
+    position: absolute; 
+    top: 30%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: flex; 
+    gap: 15px; 
+}
+
+.footer-icon {
+    width: 24px; 
+    height: 24px; 
+    cursor: pointer;
+}
+
+.footer-icon:hover {
+    color: rgb(213, 205, 205);
+}
+
+.footer-contact {
+        position: absolute; 
+    right: 20px; 
+    top: 15%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; 
+    margin-right: 2vw;
+    
+}
+
+.contact-item {
+    margin-bottom: 10px;
+}
+
+.contact-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.footer-link {
+    margin: 5px 0; 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 16px; 
+}
+
+.footer-link:hover {
+    text-decoration: solid; 
+    color: chocolate;
+    font-size: 18px; 
+}
+
+
+.footer-copyright {
+    font-size: 14px; 
+    position: absolute; 
+    bottom: 10px; 
+    width: 100%; 
+    text-align: center; 
+} 
+
+
