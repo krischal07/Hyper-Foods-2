@@ -8,7 +8,6 @@ import { RxCross2 } from "react-icons/rx";
 import hyperlogo from "../../assets/hyperlogo.png";
 import { useSelector } from "react-redux";
 
-// 2:14:30
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -20,7 +19,7 @@ export default function Navbar() {
 
   const logout = () => {
     localStorage.clear("user");
-    window.location.href = "/login";
+    window.location.href = "/";
     console.log("logout clikced");
   };
   const cartItems = useSelector((state) => state.cart);
@@ -237,7 +236,7 @@ export default function Navbar() {
                     ""
                   )}
 
-                  {user?.user?.email === "admin@gmail.com" ? (
+                  {user?.email === "admin@gmail.com" ? (
                     <Link
                       to={"/dashboard"}
                       className="text-sm font-medium text-gray-700 "
@@ -330,6 +329,17 @@ export default function Navbar() {
                       {cartItems.length}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
+                  </Link>
+                </div>
+                <div className=" p-2">
+                  <Link to={"/login"}>
+                    {user === null ? (
+                      <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                        Login
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </Link>
                 </div>
               </div>
