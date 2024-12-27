@@ -72,6 +72,30 @@ const myState = (props) => {
       setLoading(false);
     }
   };
+
+  const [user, setUser] = useState([]);
+  const getUserData = () => {
+    setLoading(true);
+    try {
+      const q = query(collection(fireDB, "users"), orderBy("time"));
+      const data = onSnapshot(q, (QuerySnapshot) => {
+        let userArray = [];
+        QuerySnapshot.forEach((doc) => {
+          userArray.push({ ...doc.data(), id: doc.id });
+        });
+        setUser(userArray);
+        setLoading(false);
+      });
+      return () => data;
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   const [carasoule, setCarasoule] = useState([]);
   const getCarasouleData = () => {
     setLoading(true);
@@ -173,6 +197,7 @@ const myState = (props) => {
         updateProduct,
         deleteProduct,
         carasoule,
+        user,
       }}
     >
       {props.children}

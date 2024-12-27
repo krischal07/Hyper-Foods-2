@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, product, editHandle, deleteProduct, carasoule } = context;
-  console.log(carasoule);
+  const { mode, product, editHandle, deleteProduct, carasoule, user } = context;
+  console.log(user);
 
   let [isOpen, setIsOpen] = useState(false);
 
@@ -432,58 +432,64 @@ function DashboardTab() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr
-                      className="bg-gray-50 border-b  dark:border-gray-700"
-                      style={{
-                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                        color: mode === "dark" ? "white" : "",
-                      }}
-                    >
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        1.
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Name
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Address
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        181919
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        1991818818
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        kkk@gmail.com
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        12 Aug 2019
-                      </td>
-                    </tr>
-                  </tbody>
+                  {user.map((item, index) => {
+                    const { name, email } = item;
+                    return (
+                      <tbody>
+                        <tr
+                          className="bg-gray-50 border-b  dark:border-gray-700"
+                          style={{
+                            backgroundColor:
+                              mode === "dark" ? "rgb(46 49 55)" : "",
+                            color: mode === "dark" ? "white" : "",
+                          }}
+                        >
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {index + 1}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {name}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            Address
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            181919
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            1991818818
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {email}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            12 Aug 2019
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
                 </table>
               </div>
             </TabPanel>
