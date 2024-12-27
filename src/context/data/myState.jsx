@@ -118,6 +118,19 @@ const myState = (props) => {
   useEffect(() => {
     getCarasouleData();
   }, []);
+
+  const deleteCarasoule = async (id) => {
+    setLoading(true);
+    try {
+      await deleteDoc(doc(fireDB, "carouselImages", id));
+      toast.success("Carasouel Deleted");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   const [product, setProduct] = useState([]);
   const getProductData = async () => {
     setLoading(true);
@@ -198,6 +211,7 @@ const myState = (props) => {
         deleteProduct,
         carasoule,
         user,
+        deleteCarasoule,
       }}
     >
       {props.children}

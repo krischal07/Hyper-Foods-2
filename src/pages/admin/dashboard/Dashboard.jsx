@@ -7,8 +7,8 @@ import DashboardTab from "./DashboardTab";
 function Dashboard() {
   const context = useContext(myContext);
   const { mode, product, user } = context;
-  console.log("length of products: " + product.length);
-  console.log("length of users: " + user.length);
+  //   console.log("length of products: " + product.length);
+  //   console.log("length of users: " + user.length);
   return (
     <Layout>
       <section className="text-gray-600 body-font mt-10 mb-10">
