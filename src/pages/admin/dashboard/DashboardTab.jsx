@@ -61,6 +61,16 @@ function DashboardTab() {
                   </div>
                 </button>
               </Tab>
+              <Tab>
+                <button
+                  type="button"
+                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_3px_rgba(0,0,0,0.1)]   px-5 py-1.5 text-center "
+                >
+                  <div className="flex gap-2 items-center">
+                    <FaUser /> Carasoule Data
+                  </div>
+                </button>
+              </Tab>
             </TabList>
             {/* product  */}
             <TabPanel>
@@ -86,6 +96,22 @@ function DashboardTab() {
                       Add Product <FaCartPlus size={20} />
                     </div>
                   </button>
+                  {/* Upload Carasoule */}
+                  <Link to={"/upload_carasoule"}>
+                    <button
+                      type="button"
+                      className="focus:outline-none text-white bg-pink-600 shadow-[inset_0_0_2px_rgba(0,0,0,0.1)] border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+                      style={{
+                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+                        color: mode === "dark" ? "white" : "",
+                      }}
+                    >
+                      {" "}
+                      <div className="flex gap-2 items-center">
+                        Upload Carasoule <FaCartPlus size={20} />
+                      </div>
+                    </button>
+                  </Link>
                 </div>
                 <div className="relative overflow-x-auto ">
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">

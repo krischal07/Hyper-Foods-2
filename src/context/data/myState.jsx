@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const myState = (props) => {
   const [mode, setMode] = useState("light");
@@ -129,6 +130,13 @@ const myState = (props) => {
     }
   };
 
+  // const uploadImage = async (file) => {
+  //   const storageRef = ref(Storage, `carasoule/${file.name}`);
+  //   await uploadBytes(storageRef, file);
+  //   const url = await getDownloadURL(storageRef);
+  //   return url;
+  // };
+
   return (
     <myContext.Provider
       value={{
@@ -143,6 +151,7 @@ const myState = (props) => {
         editHandle,
         updateProduct,
         deleteProduct,
+        // uploadImage,
       }}
     >
       {props.children}
