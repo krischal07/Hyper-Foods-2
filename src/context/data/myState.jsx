@@ -72,7 +72,28 @@ const myState = (props) => {
       setLoading(false);
     }
   };
-
+  const [carasoule, setCarasoule] = useState([]);
+  const getCarasouleData = () => {
+    setLoading(true);
+    try {
+      const q = query(collection(fireDB, "carouselImages"), orderBy("time"));
+      const data = onSnapshot(q, (QuerySnapshot) => {
+        let carasouleArray = [];
+        QuerySnapshot.forEach((doc) => {
+          carasouleArray.push({ ...doc.data(), id: doc.id });
+        });
+        setCarasoule(carasouleArray);
+        setLoading(false);
+      });
+      return () => data;
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getCarasouleData();
+  }, []);
   const [product, setProduct] = useState([]);
   const getProductData = async () => {
     setLoading(true);
@@ -151,7 +172,7 @@ const myState = (props) => {
         editHandle,
         updateProduct,
         deleteProduct,
-        // uploadImage,
+        carasoule,
       }}
     >
       {props.children}

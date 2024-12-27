@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { fireDB } from "../../../../firebase/FirebaseConfig"; // Adjust based on your file structure
 import { toast } from "react-toastify";
 import myContext from "../../../../context/data/myContext";
@@ -9,6 +9,7 @@ const UploadCarouselForm = () => {
 
   const { loading, setLoading } = context;
   const [formData, setFormData] = useState({
+    time: Timestamp.now(),
     title: "",
     description: "",
     imageUrl: "",
@@ -21,7 +22,7 @@ const UploadCarouselForm = () => {
       console.log("Document written with ID: ", docRef.id);
       toast.success("Uploaded Sucessfully");
       setLoading(true);
-      setFormData({ title: "", description: "", imageUrl: "" });
+      setFormData({ id: "", title: "", description: "", imageUrl: "" });
       return docRef.id;
     } catch (error) {
       console.error("Error adding document: ", error);
