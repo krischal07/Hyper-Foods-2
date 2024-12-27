@@ -47,6 +47,7 @@ function Login() {
         </div>
         {/* Title */}
         <h1 className="text-center text-black text-xl mb-4 font-bold">Login</h1>
+        <div className="flex flex-col items-center">
         {/* Email Input */}
         <input
           type="email"
@@ -75,6 +76,7 @@ function Login() {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
+        </div>
         {/* Signup Link */}
         <p className="text-black mt-3">
           Don't have an account?{" "}

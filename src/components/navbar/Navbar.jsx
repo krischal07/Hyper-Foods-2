@@ -162,7 +162,7 @@ export default function Navbar() {
             color: mode === "dark" ? "white" : "",
           }}
         >
-          Get free delivery on orders over ₹1000
+          HyperFoods is all it takes to just click🍟
         </p>
 
         <nav
@@ -280,8 +280,8 @@ export default function Navbar() {
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
                       className="inline-block w-10 h-10 rounded-full"
-                      src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
-                      alt="Dan_Abromov"
+                      src="src/assets/nepal.png"
+                      alt=""
                     />
                   </a>
                 </div>

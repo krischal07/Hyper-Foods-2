@@ -25,25 +25,25 @@ function MenuCard({ title, description, price, image }) {
 function App() {
   const menuItems = [
     {
-      title: "Delicious Burger",
+      title: "Mughal Restaurant",
       description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
       price: "8.99",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Classic Pizza",
+      title: "Royal Thakali",
       description: "Cheesy pizza with your favorite toppings and toppings.",
       price: "12.49",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Fresh Salad",
+      title: "Mughal Restaurant",
       description: "A healthy mix of greens, veggies, and dressing.",
       price: "6.99",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Tasty Pasta",
+      title: "TRoyal Thakali",
       description: "Rich and creamy pasta made to perfection.",
       price: "10.99",
       image: "./src/assets/menu.png",
