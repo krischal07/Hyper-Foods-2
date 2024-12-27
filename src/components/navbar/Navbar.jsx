@@ -133,7 +133,7 @@ export default function Navbar() {
             color: mode === "dark" ? "white" : "",
           }}
         >
-          Get free delivery on orders over ₹1000
+          HyperFoods is what just needs to be clicked 🍟
         </p>
 
         <nav

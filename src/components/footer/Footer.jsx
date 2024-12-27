@@ -23,6 +23,9 @@ const Footer = () => {
           <img src='https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg' alt='LinkedIn' className='footer-icon' />
         </a>
       </div>
+      <div className='footer-copyright'>
+        <h4>{new Date().getFullYear()} | © All Rights Reserved</h4>
+      </div>
       <div className='footer-contact'>
         <div className='contact-item'>
           <h5><i className="fas fa-envelope"></i>  <a href="mailto:info@hypersolutions.com">solutionhyperit@gmail.com</a></h5>
@@ -34,9 +37,7 @@ const Footer = () => {
           <h5><i className="fas fa-globe"></i> <a href="https://www.hypernepal.com">www.hypernepal.com</a></h5>
         </div>
       </div>
-      <div className='footer-copyright'>
-        <h4>{new Date().getFullYear()} | © All Rights Reserved</h4>
-      </div>
+      
     </div>
   );
 };

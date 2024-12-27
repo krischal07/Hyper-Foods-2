@@ -26,25 +26,25 @@ function MenuCard({ title, description, price, image }) {
 function App() {
   const menuItems = [
     {
-      title: "Delicious Burger",
+      title: "Restaurant",
       description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
       price: "8.99",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Classic Pizza",
+      title: "Liquor",
       description: "Cheesy pizza with your favorite toppings and toppings.",
       price: "12.49",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Fresh Salad",
+      title: "Grocery",
       description: "A healthy mix of greens, veggies, and dressing.",
       price: "6.99",
       image: "./src/assets/menu.png",
     },
     {
-      title: "Tasty Pasta",
+      title: "Foods",
       description: "Rich and creamy pasta made to perfection.",
       price: "10.99",
       image: "./src/assets/menu.png",
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Our Menu</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {menuItems.map((item, index) => (
           <MenuCard
