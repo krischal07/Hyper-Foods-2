@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const myState = (props) => {
   const [mode, setMode] = useState("light");
@@ -71,7 +72,28 @@ const myState = (props) => {
       setLoading(false);
     }
   };
-
+  const [carasoule, setCarasoule] = useState([]);
+  const getCarasouleData = () => {
+    setLoading(true);
+    try {
+      const q = query(collection(fireDB, "carouselImages"), orderBy("time"));
+      const data = onSnapshot(q, (QuerySnapshot) => {
+        let carasouleArray = [];
+        QuerySnapshot.forEach((doc) => {
+          carasouleArray.push({ ...doc.data(), id: doc.id });
+        });
+        setCarasoule(carasouleArray);
+        setLoading(false);
+      });
+      return () => data;
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getCarasouleData();
+  }, []);
   const [product, setProduct] = useState([]);
   const getProductData = async () => {
     setLoading(true);
@@ -129,6 +151,13 @@ const myState = (props) => {
     }
   };
 
+  // const uploadImage = async (file) => {
+  //   const storageRef = ref(Storage, `carasoule/${file.name}`);
+  //   await uploadBytes(storageRef, file);
+  //   const url = await getDownloadURL(storageRef);
+  //   return url;
+  // };
+
   return (
     <myContext.Provider
       value={{
@@ -143,6 +172,7 @@ const myState = (props) => {
         editHandle,
         updateProduct,
         deleteProduct,
+        carasoule,
       }}
     >
       {props.children}

@@ -19,6 +19,7 @@ import UpdateProduct from "./pages/admin/page/UpdateProduct";
 import AllProducts from "./pages/allproducts/AllProducts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UploadCarasoule from "./pages/admin/page/Carasoule/UploadCarasoule";
 
 const App = () => {
   return (
@@ -63,6 +64,14 @@ const App = () => {
             }
           />
           <Route path="/allproducts" element={<AllProducts />} />
+          <Route
+            path="/upload_carasoule"
+            element={
+              <ProtectedRouteForAdmin>
+                <UploadCarasoule />
+              </ProtectedRouteForAdmin>
+            }
+          />
           <Route path="/*" element={<NoPage />} />
         </Routes>
         <ToastContainer />
