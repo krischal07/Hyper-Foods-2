@@ -27,7 +27,7 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.error(error);
-      toast.error(error.message);
+      toast.error("Email or Password incorrect!");
     } finally {
       setLoading(false);
     }
