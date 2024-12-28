@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import myContext from "../../context/data/myContext";
 import Ayush from "../../assets/ayush.jpeg";
 import Krischal from "../../assets/krischal.jpeg";
+import shikhadidi from "../../assets/shikhadidi.jpeg";
 function Testimonial() {
   const context = useContext(myContext);
   const { mode } = context;
@@ -19,14 +20,14 @@ function Testimonial() {
             className=" text-center text-2xl font-semibold mb-10"
             style={{ color: mode === "dark" ? "white" : "" }}
           >
-            What our <span className=" text-red-500">consumer</span> are saying
+            From the <span className=" text-red-500">TEAM</span>
           </h2>
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
-                  className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                  className="w-32 h-32 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                   src={Ayush}
                 />
                 <p
@@ -35,7 +36,7 @@ function Testimonial() {
                 >
                   Foods from Hyper is happy mood.
                 </p>
-                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
+                <span className="inline-block h-1 w-10 rounded bg-red-600 mt-6 mb-4" />
                 <h2
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
@@ -54,8 +55,8 @@ function Testimonial() {
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
-                  className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png"
+                  className="w-32 h-32 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                  src={shikhadidi}
                 />
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -63,7 +64,7 @@ function Testimonial() {
                 >
                   Yum Foods! from Hyper Foods.
                 </p>
-                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
+                <span className="inline-block h-1 w-10 rounded bg-red-600 mt-6 mb-4" />
                 <h2
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
@@ -82,7 +83,7 @@ function Testimonial() {
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
-                  className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                  className="w-32 h-32 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                   src={Krischal}
                 />
                 <p
@@ -91,7 +92,7 @@ function Testimonial() {
                 >
                   Daily foods, Hyper Foods
                 </p>
-                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
+                <span className="inline-block h-1 w-10 rounded bg-red-600 mt-6 mb-4" />
                 <h2
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
