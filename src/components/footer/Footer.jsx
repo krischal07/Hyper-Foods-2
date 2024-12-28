@@ -1,11 +1,12 @@
 import React from 'react';
 import './Footer.css';
+import footerlogo from "../../assets/hyperlogo.png";
 
 const Footer = () => {
   return (
     <div className='footer-main'>
       <div className='footer-logo'>
-        <img src='src/assets/hyperlogo.png' alt='Logo' className='footer-logo-img' />
+        <img src={footerlogo} alt='Logo' className='footer-logo-img' />
       </div>
       <div className='footer-links'>
         <a href='#home' className='footer-link'>Home</a>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import menuImage from "../../assets/menu.png";
+
 
 function MenuCard({ title, description, price, image }) {
   return (
@@ -29,25 +31,25 @@ function App() {
       title: "Restaurant",
       description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
       price: "8.99",
-      image: "./src/assets/menu.png",
+      image: menuImage,
     },
     {
       title: "Liquor",
       description: "Cheesy pizza with your favorite toppings and toppings.",
       price: "12.49",
-      image: "./src/assets/menu.png",
+      image: menuImage,
     },
     {
       title: "Grocery",
       description: "A healthy mix of greens, veggies, and dressing.",
       price: "6.99",
-      image: "./src/assets/menu.png",
+      image: menuImage,
     },
     {
       title: "Foods",
       description: "Rich and creamy pasta made to perfection.",
       price: "10.99",
-      image: "./src/assets/menu.png",
+      image: menuImage,
     },
   ];
 
