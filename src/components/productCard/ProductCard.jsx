@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import menuImage from "../../assets/menu.png";
+import myContext from "../../context/data/myContext";
 
 
 function MenuCard({ title, description, price, image }) {
@@ -26,6 +27,7 @@ function MenuCard({ title, description, price, image }) {
 }
 
 function App() {
+  const { mode } = useContext(myContext); 
   const menuItems = [
     {
       title: "Restaurant",
@@ -54,7 +56,10 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8 "
+    style={{ 
+      backgroundColor: mode === "dark" ? "#101c24" : "white",
+      color: mode === "dark" ? "white" : "" }} >
       <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {menuItems.map((item, index) => (
@@ -64,6 +69,8 @@ function App() {
             description={item.description}
             price={item.price}
             image={item.image}
+            mode = {mode}
+
           />
         ))}
       </div>

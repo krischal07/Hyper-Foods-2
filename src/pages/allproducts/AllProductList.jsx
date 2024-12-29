@@ -54,7 +54,7 @@ function AllProducts() {
                   </div>
                   <div className="p-5 border-t-2">
                     <h2
-                      className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
+                      className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Hyper Foods
@@ -96,7 +96,7 @@ function AllProducts() {
                     <div className="flex justify-center">
                       <button
                         type="button"
-                        className="focus:outline-none text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full py-2"
+                        className="focus:outline-none text-white bg-blue-800 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full py-2"
                         onClick={() => addCart(item)}
                       >
                         Add To Cart

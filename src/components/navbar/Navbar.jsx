@@ -285,7 +285,7 @@ export default function Navbar() {
                 <div className=" p-2">
                   <Link to={"/login"}>
                     {user === null ? (
-                      <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                      <button className="bg-blue-800 text-white font-bold py-2 px-4 rounded">
                         Login
                       </button>
                     ) : (
