@@ -97,6 +97,9 @@ function Cart() {
         progress: undefined,
         theme: "colored",
       });
+      setName("");
+      setAddress("");
+      setPhone("");
     }
   };
   const addressInfo = {
