@@ -125,7 +125,10 @@ function DashboardTab() {
                           Title
                         </th>
                         <th scope="col" className="px-6 py-3">
-                          Price
+                          Actual Price
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          Offer Price
                         </th>
                         <th scope="col" className="px-6 py-3">
                           Category
@@ -150,6 +153,7 @@ function DashboardTab() {
                         sub_category,
                         description,
                         date,
+                        actualPrice,
                       } = item;
                       return (
                         <tbody className="">
@@ -178,6 +182,12 @@ function DashboardTab() {
                               style={{ color: mode === "dark" ? "white" : "" }}
                             >
                               {title}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {actualPrice}
                             </td>
                             <td
                               className="px-6 py-4 text-black "
