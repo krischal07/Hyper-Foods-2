@@ -3,7 +3,11 @@ import myContext from "../../context/data/myContext";
 import Layout from "../../components/layout/Layout";
 import Modal from "../../components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart } from "../../redux/cartSlice";
+import {
+  decrementQuantity,
+  deleteFromCart,
+  incrementQuantity,
+} from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 
 function Cart() {
@@ -14,29 +18,41 @@ function Cart() {
   console.log(cartItems);
 
   const dispatch = useDispatch();
+
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
     toast.success("Item Deleted");
   };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
   const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
-    let temp = 0;
-    cartItems.forEach((item) => {
-      console.log("itemprice: " + item.price);
-      temp += parseInt(item.price);
-    });
+    const temp = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
     setTotalAmount(temp);
-    console.log("total", totalAmount);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+  // useEffect(() => {
+  //   let temp = 0;
+  //   cartItems.forEach((item) => {
+  //     console.log("itemprice: " + item.price);
+  //     temp += parseInt(item.price);
+  //   });
+  //   setTotalAmount(temp);
+  //   console.log("total", totalAmount);
+  // }, [cartItems]);
 
   const shipping = parseInt(100);
   const grandTotal = shipping + totalAmount;
   console.log("grandTotal", grandTotal);
+
+  const handleIncrement = (item) => {
+    dispatch(incrementQuantity(item));
+  };
+  const handleDecrement = (item) => {
+    dispatch(decrementQuantity(item));
+  };
   return (
     <Layout>
       <div
@@ -53,6 +69,7 @@ function Cart() {
           <div className="rounded-lg md:w-2/3 ">
             {cartItems.map((item, index) => {
               const { title, description, imageUrl, price } = item;
+              console.log(item);
               return (
                 <div
                   className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6  sm:flex  sm:justify-start"
@@ -84,8 +101,23 @@ function Cart() {
                         className="mt-1 text-xs font-semibold text-gray-700"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        Rs. {price}
+                        Rs.{price}
                       </p>
+                    </div>
+                    <div className="mt-4 flex space-x-3">
+                      <button
+                        onClick={() => handleDecrement(item)}
+                        className="px-2 py-1 bg-gray-200 rounded-md h-8 font-extrabold"
+                      >
+                        -
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() => handleIncrement(item)}
+                        className="px-2 py-1 bg-gray-200 rounded-md font-extrabold h-8"
+                      >
+                        +
+                      </button>
                     </div>
                     <div
                       className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6"
