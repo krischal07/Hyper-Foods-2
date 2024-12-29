@@ -43,7 +43,7 @@ function AddProduct() {
               type="text"
               name="price"
               className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
-              placeholder="Price"
+              placeholder="Offer Price"
               value={products.price || ""}
               onChange={(e) => {
                 const priceValue = parseFloat(e.target.value);
