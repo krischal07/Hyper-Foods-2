@@ -34,7 +34,7 @@ function AllProducts() {
 
         <div className="flex flex-wrap -m-4">
           {product.map((item, index) => {
-            const { title, price, imageUrl } = item;
+            const { title, price, imageUrl, actualPrice } = item;
 
             return (
               <div className="p-4 md:w-1/4 drop-shadow-lg" key={index}>
@@ -65,9 +65,31 @@ function AllProducts() {
                     >
                       {title}
                     </h1>
+                    {actualPrice ? (
+                      <p
+                        className="leading-relaxed mb-3"
+                        style={{
+                          color: mode === "dark" ? "white" : "",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        Rs. {actualPrice}
+                      </p>
+                    ) : (
+                      <div
+                        className="mb-3"
+                        style={{
+                          height: "1.5em", // Adjust based on the height of the <p> tag
+                        }}
+                      ></div>
+                    )}
+
                     <p
-                      className="leading-relaxed mb-3"
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      className="leading-relaxed mb-3  text-center font-bold"
+                      style={{
+                        color: mode === "dark" ? "white" : "",
+                        fontSize: 25,
+                      }}
                     >
                       Rs. {price}
                     </p>

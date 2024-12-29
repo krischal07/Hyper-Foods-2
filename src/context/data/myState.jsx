@@ -33,6 +33,7 @@ const myState = (props) => {
 
   const [products, setProducts] = useState({
     title: "",
+    actualPrice: "",
     price: "",
     imageUrl: "",
     category: "",
@@ -50,6 +51,7 @@ const myState = (props) => {
     if (
       products.title === null ||
       products.price === null ||
+      products.actualPrice == null ||
       products.imageUrl === null ||
       products.category === null ||
       products.sub_catgeory === null ||

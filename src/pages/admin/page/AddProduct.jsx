@@ -29,13 +29,32 @@ function AddProduct() {
           <div>
             <input
               type="text"
+              name="acutalPrice"
+              className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
+              placeholder="Actual Price"
+              value={products.actualPrice || ""}
+              onChange={(e) => {
+                setProducts({ ...products, actualPrice: e.target.value });
+              }}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
               name="price"
               className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
               placeholder="Price"
               value={products.price || ""}
-              onChange={(e) =>
-                setProducts({ ...products, price: e.target.value })
-              }
+              onChange={(e) => {
+                const priceValue = parseFloat(e.target.value);
+                const actualValue = parseFloat(products.actualPrice);
+                if (actualValue <= priceValue) {
+                  toast.error("Discount cannot be greater than price!");
+                } else {
+                  setProducts({ ...products, price: e.target.value });
+                }
+                // setProducts({ ...products, price: e.target.value })
+              }}
             />
           </div>
           <div>
