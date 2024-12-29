@@ -32,11 +32,12 @@ const myState = (props) => {
   const [loading, setLoading] = useState(false);
 
   const [products, setProducts] = useState({
-    title: null,
-    price: null,
-    imageUrl: null,
-    category: null,
-    description: null,
+    title: "",
+    price: "",
+    imageUrl: "",
+    category: "",
+    sub_category: "",
+    description: "",
     time: Timestamp.now(),
     date: new Date().toLocaleString("en-US", {
       month: "short",
@@ -51,6 +52,7 @@ const myState = (props) => {
       products.price === null ||
       products.imageUrl === null ||
       products.category === null ||
+      products.sub_catgeory === null ||
       products.description === null
     ) {
       return toast.error("All fields are required!!");
