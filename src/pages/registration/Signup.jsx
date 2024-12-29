@@ -6,6 +6,7 @@ import { auth, fireDB } from "../../firebase/FirebaseConfig"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import Loader from '../../components/loader/Loader'
+import signuplogo from "../../assets/hyperlogo.png"
 
 function Signup() {
 
@@ -53,7 +54,7 @@ function Signup() {
             {/* logo */}
          <div className="flex justify-center mb-4">
                <img 
-                  src="/src/assets/hyperlogo.png" 
+                  src={signuplogo}
                   alt="App Logo" 
                   className="w-30 h-20 object-contain"
                />

@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 import Loader from "../../components/loader/Loader";
+import Hyperlogo from "../../assets/hyperlogo.png";
 
 function Login() {
   const { loading, setLoading } = useContext(myContext);
@@ -40,7 +41,7 @@ function Login() {
         {/* Logo */}
         <div className="flex justify-center mb-4">
           <img
-            src="/src/assets/hyperlogo.png"
+            src={Hyperlogo}
             alt="App Logo"
             className="w-30 h-20 object-contain"
           />
@@ -48,6 +49,7 @@ function Login() {
         {/* Title */}
         <h1 className="text-center text-black text-xl mb-4 font-bold">Login</h1>
         {/* Email Input */}
+        <div>
         <input
           type="email"
           name="email"
@@ -57,8 +59,10 @@ function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        </div>
         {/* Password Input */}
-        <input
+        <div>
+                <input
           type="password"
           name="password"
           aria-label="Password"
@@ -67,6 +71,7 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
         {/* Login Button */}
         <button
           className="bg-blue-800 w-full text-white font-bold px-2 py-2 rounded-lg"
