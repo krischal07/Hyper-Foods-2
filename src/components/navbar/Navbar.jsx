@@ -90,7 +90,7 @@ export default function Navbar() {
                     ""
                   )}
 
-                  {user?.user?.email === "admin@gmail.com" ? (
+                  {user?.email === "admin@gmail.com" ? (
                     <div className="flow-root">
                       <Link
                         to={"/dashboard"}

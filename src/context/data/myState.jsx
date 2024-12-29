@@ -192,6 +192,23 @@ const myState = (props) => {
     }
   };
 
+  // const [order, setOrder] = useState([]);
+  // const getOrderData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const result = await getDocs(collection(fireDB, "order"));
+  //     const ordersArray = [];
+  //     result.forEach((doc) => {
+  //       ordersArray.push({ ...doc.data() });
+  //     });
+  //     setOrder(ordersArray);
+  //     console.log(ordersArray);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   // const uploadImage = async (file) => {
   //   const storageRef = ref(Storage, `carasoule/${file.name}`);
   //   await uploadBytes(storageRef, file);
