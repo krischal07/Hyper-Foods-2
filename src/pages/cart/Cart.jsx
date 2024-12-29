@@ -9,6 +9,8 @@ import {
   incrementQuantity,
 } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { fireDB } from "../../firebase/FirebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
 
 function Cart() {
   const context = useContext(myContext);
@@ -46,6 +48,68 @@ function Cart() {
   const shipping = parseInt(100);
   const grandTotal = shipping + totalAmount;
   console.log("grandTotal", grandTotal);
+
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const options = () => {
+    const orderInfo = {
+      cartItems,
+      addressInfo,
+      date: new Date().toLocaleString("en-US", {
+        name: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+      email: JSON.parse(localStorage.getItem("email")),
+      userId: JSON.parse(localStorage.getItem("user")),
+    };
+    try {
+      const orderRef = collection(fireDB, "order");
+      addDoc(orderRef, orderInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const buyNow = () => {
+    if (name === "" || address === "" || phone === "") {
+      return toast.error("All fields are required!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      options();
+      toast.success("Order placed successfully!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
+  const addressInfo = {
+    name,
+    address,
+    phone,
+    date: new Date().toLocaleString("en-US", {
+      name: "short",
+      day: "2-digit",
+      year: "numeric",
+    }),
+  };
+  console.log(addressInfo);
 
   const handleIncrement = (item) => {
     dispatch(incrementQuantity(item));
@@ -197,7 +261,15 @@ function Cart() {
               </div>
             </div>
             {/* <Modal  /> */}
-            <Modal />
+            <Modal
+              name={name}
+              address={address}
+              phone={phone}
+              setName={setName}
+              setAddress={setAddress}
+              setPhone={setPhone}
+              buyNow={buyNow}
+            />
           </div>
         </div>
       </div>
