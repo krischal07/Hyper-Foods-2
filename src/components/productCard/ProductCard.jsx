@@ -7,7 +7,7 @@ import myContext from "../../context/data/myContext";
 function MenuCard({ title, description, price, image }) {
   return (
     <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden">
-      <img className="w-full h-48 object-cover" src={image} alt={title} />
+      <img className="w-full h-80 object-cover" src={image} alt={title} />
       <div className="p-6">
         <h2 className="text-xl font-semibold text-center text-gray-800">
           {title}

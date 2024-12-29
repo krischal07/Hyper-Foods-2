@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Footer.css';
 import footerlogo from "../../assets/hyperlogo.png";
+import myContext from '../../context/data/myContext';
 
 const Footer = () => {
+  const context = useContext(myContext); 
+  const {mode} = context;
   return (
     <div className='footer-main'>
       <div className='footer-logo'>
