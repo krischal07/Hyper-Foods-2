@@ -3,6 +3,8 @@ import myContext from "../../context/data/myContext";
 import Ayush from "../../assets/ayush.jpeg";
 import Krischal from "../../assets/krischal.jpeg";
 import shikhadidi from "../../assets/shikhadidi.jpeg";
+import arpit from "../../assets/arpit.jpeg";
+import devashish from "../../assets/devashish.png";
 
 function Testimonial() {
   const context = useContext(myContext);
@@ -105,7 +107,63 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "white" : "" }}
                   className="text-gray-500"
                 >
-                  Software Engineer
+                  Software Developer
+                </p>
+              </div>
+            </div>
+            <div className="lg:w-1/3 sm:w-1/2 w-full mb-6 p-4 flex flex-col items-center">
+              <div className="h-full text-center">
+                <img
+                  alt="testimonial"
+                  className="w-32 h-32 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                  src={arpit}
+                />
+                <p
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className="leading-relaxed"
+                >
+                  Hyper Foods 😋
+                </p>
+                <span className="inline-block h-1 w-10 rounded bg-red-600 mt-6 mb-4" />
+                <h2
+                  style={{ color: mode === "dark" ? "#ff4162" : "" }}
+                  className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
+                >
+                  Arpit Adhikari
+                </h2>
+                <p
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className="text-gray-500"
+                >
+                  Software Developer 
+                </p>
+              </div>
+            </div>
+            <div className="lg:w-1/3 sm:w-1/2 w-full mb-6 p-4 flex flex-col items-center">
+              <div className="h-full text-center">
+                <img
+                  alt="testimonial"
+                  className="w-32 h-32 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                  src={devashish}
+                />
+                <p
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className="leading-relaxed"
+                >
+                  Yum Yum Yum Yum Yum Yum Yum 😋
+                </p>
+                <span className="inline-block h-1 w-10 rounded bg-red-600 mt-6 mb-4" />
+                <h2
+                  style={{ color: mode === "dark" ? "#ff4162" : "" }}
+                  className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
+                >
+                  Devashish Poudel
+                </h2>
+                <p
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className="text-gray-500"
+                >
+                  Designer
                 </p>
               </div>
             </div>
