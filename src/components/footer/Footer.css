@@ -10,11 +10,16 @@
 .footer-logo {
     display: flex;
     align-items: center;
+    /* position: relative; */
+   
 }
   
 .footer-logo-img {
-    height: 20vh;
+    /* position: fixed; */
+        height: 20vh;
+
     margin-right: 2vw;  
+    
 }
 
 .footer-social {
@@ -88,7 +93,7 @@
         height: 20vh;
         width: 100vw;
         /* border-radius: 10px; */
-        right: 2%;
+        right: 0;  
         bottom: 0;
         top: auto;  /* Remove the top positioning */
     }
