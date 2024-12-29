@@ -3,27 +3,29 @@ import myContext from "../../context/data/myContext";
 import Ayush from "../../assets/ayush.jpeg";
 import Krischal from "../../assets/krischal.jpeg";
 import shikhadidi from "../../assets/shikhadidi.jpeg";
+
 function Testimonial() {
   const context = useContext(myContext);
   const { mode } = context;
+
   return (
     <div>
       <section className="text-gray-600 body-font mb-10">
         <div className="container px-5 py-10 mx-auto">
           <h1
-            className=" text-center text-3xl font-bold text-black"
+            className="text-center text-3xl font-bold text-black"
             style={{ color: mode === "dark" ? "white" : "" }}
           >
             Hyper Foods
           </h1>
           <h2
-            className=" text-center text-2xl font-semibold mb-10"
+            className="text-center text-2xl font-semibold mb-10"
             style={{ color: mode === "dark" ? "white" : "" }}
           >
-            From the <span className=" text-red-500">TEAM</span>
+            From the <span className="text-red-500">TEAM</span>
           </h2>
-          <div className="flex flex-wrap -m-4">
-            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4 flex flex-col items-center">
+          <div className="flex flex-wrap -m-4 justify-center">
+            <div className="lg:w-1/3 sm:w-1/2 w-full mb-6 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
@@ -51,7 +53,7 @@ function Testimonial() {
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4 flex flex-col items-center">
+            <div className="lg:w-1/3 sm:w-1/2 w-full mb-6 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
@@ -79,7 +81,7 @@ function Testimonial() {
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/3 lg:mb-0 p-4 flex flex-col items-center">
+            <div className="lg:w-1/3 sm:w-1/2 w-full mb-6 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
