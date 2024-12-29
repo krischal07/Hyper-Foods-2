@@ -23,7 +23,7 @@ function Testimonial() {
             From the <span className=" text-red-500">TEAM</span>
           </h2>
           <div className="flex flex-wrap -m-4">
-            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
@@ -51,7 +51,7 @@ function Testimonial() {
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+            <div className="lg:w-1/3 lg:mb-0 mb-6 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
@@ -79,7 +79,7 @@ function Testimonial() {
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/3 lg:mb-0 p-4">
+            <div className="lg:w-1/3 lg:mb-0 p-4 flex flex-col items-center">
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
