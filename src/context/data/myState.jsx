@@ -37,7 +37,11 @@ const myState = (props) => {
     actualPrice: "",
     price: "",
     imageUrl: "",
+    parentCategory: "",
     category: "",
+    extra_option: "",
+    extra_name: "",
+    extra_price: "",
     sub_category: "",
     description: "",
     time: Timestamp.now(),
@@ -54,9 +58,13 @@ const myState = (props) => {
       products.price === null ||
       products.actualPrice == null ||
       products.imageUrl === null ||
+      products.parentCategory === null ||
       products.category === null ||
       products.sub_catgeory === null ||
-      products.description === null
+      products.description === null ||
+      products.extra_option === null ||
+      products.extra_name === null ||
+      products.extra_price === null
     ) {
       return toast.error("All fields are required!!");
     }

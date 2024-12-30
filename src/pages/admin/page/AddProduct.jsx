@@ -7,7 +7,7 @@ function AddProduct() {
 
   return (
     <div>
-      <div className=" flex justify-center items-center h-screen">
+      <div className=" flex justify-center items-center">
         <div className=" bg-blue-950 px-10 py-10 rounded-xl ">
           <div className="">
             <h1 className="text-center text-white text-xl mb-4 font-bold">
@@ -70,31 +70,33 @@ function AddProduct() {
             />
           </div>
           <div>
-            {/* <input
-              type="text"
-              name="category"
-              className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
-              placeholder="Category"
-              value={products.category}
-              onChange={(e) =>
-                setProducts({ ...products, category: e.target.value })
-              }
-            /> */}
             <select
               name="category"
               className="bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
-              value={products.category || ""}
+              value={products.parentCategory || ""}
               onChange={(e) =>
-                setProducts({ ...products, category: e.target.value })
+                setProducts({ ...products, parentCategory: e.target.value })
               }
             >
               <option value="" disabled>
-                Select a Category
+                Select a Parent Category
               </option>
               <option value="Liquors">Liquors</option>
               <option value="Grocery">Grocery</option>
               <option value="Food">Food</option>
             </select>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="category"
+              className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
+              placeholder="Category"
+              value={products.category || ""}
+              onChange={(e) =>
+                setProducts({ ...products, category: e.target.value })
+              }
+            />
           </div>
           <div>
             <input
@@ -109,18 +111,53 @@ function AddProduct() {
             />
           </div>
           <div>
-            <textarea
-              cols="30"
-              rows="10"
-              name="title"
-              className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
-              placeholder="Description"
-              value={products.description || ""}
+            <select
+              name="extra_option"
+              className="bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
+              value={products.extra_option || ""}
               onChange={(e) =>
-                setProducts({ ...products, description: e.target.value })
+                setProducts({ ...products, extra_option: e.target.value })
               }
-            ></textarea>
+            >
+              <option value="" disabled>
+                Select if there is extra options
+              </option>
+              <option value="Yes">Yes</option>
+              <option value="Normal Temperature">Normal Temperature</option>
+              <option value="No">No</option>
+            </select>
           </div>
+          {products.extra_option === "Yes" ? (
+            <div>
+              <div>
+                <input
+                  type="text"
+                  name="extra_name"
+                  className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
+                  placeholder="Extra Name"
+                  value={products.extra_name || ""}
+                  onChange={(e) =>
+                    setProducts({ ...products, extra_name: e.target.value })
+                  }
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="extra_price"
+                  className=" bg-yellow-500 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-100 outline-none"
+                  placeholder="Extra Price"
+                  value={products.extra_price || ""}
+                  onChange={(e) =>
+                    setProducts({ ...products, extra_price: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+
           <div className=" flex justify-center mb-3">
             <button
               className=" bg-white w-full text-black font-bold  px-2 py-2 rounded-lg"

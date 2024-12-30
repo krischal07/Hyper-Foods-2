@@ -131,6 +131,12 @@ function DashboardTab() {
                           Offer Price
                         </th>
                         <th scope="col" className="px-6 py-3">
+                          Extra Name
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          Extra Price
+                        </th>
+                        <th scope="col" className="px-6 py-3">
                           Category
                         </th>
                         <th scope="col" className="px-6 py-3">
@@ -151,7 +157,8 @@ function DashboardTab() {
                         imageUrl,
                         category,
                         sub_category,
-                        description,
+                        extra_name,
+                        extra_price,
                         date,
                         actualPrice,
                       } = item;
@@ -195,6 +202,31 @@ function DashboardTab() {
                             >
                               {price}
                             </td>
+                            {extra_name === "" ? (
+                              <td className="font-extrabold">-------</td>
+                            ) : (
+                              <td
+                                className="px-6 py-4 text-black "
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                {extra_name}
+                              </td>
+                            )}
+                            {extra_price === "" ? (
+                              <td className="font-extrabold">-------</td>
+                            ) : (
+                              <td
+                                className="px-6 py-4 text-black "
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                {extra_price}
+                              </td>
+                            )}
+
                             <td
                               className="px-6 py-4 text-black "
                               style={{ color: mode === "dark" ? "white" : "" }}
