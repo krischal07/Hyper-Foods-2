@@ -11,7 +11,7 @@ import {
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
-
+import { v4 } from "uuid";
 function Cart() {
   const context = useContext(myContext);
   const { mode } = context;
@@ -53,8 +53,15 @@ function Cart() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
+  const generateOrderId = () => {
+    return Math.floor(1000 + Math.random() * 90000).toString();
+  };
+
   const options = () => {
+    const orderId = generateOrderId();
+    console.log("order id", orderId);
     const orderInfo = {
+      orderId,
       cartItems,
       addressInfo,
       date: new Date().toLocaleString("en-US", {
@@ -87,6 +94,8 @@ function Cart() {
       });
     } else {
       options();
+      dispatch({ type: "cart/clearCart" }); // Clear the cart
+
       toast.success("Order placed successfully!", {
         position: "top-center",
         autoClose: 1000,

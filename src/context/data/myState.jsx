@@ -5,6 +5,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -154,10 +155,6 @@ const myState = (props) => {
     }
   };
 
-  useEffect(() => {
-    getProductData();
-  }, []);
-
   //  update Product functio
   const editHandle = (item) => {
     setProducts(item);
@@ -192,22 +189,27 @@ const myState = (props) => {
     }
   };
 
-  // const [order, setOrder] = useState([]);
-  // const getOrderData = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const result = await getDocs(collection(fireDB, "order"));
-  //     const ordersArray = [];
-  //     result.forEach((doc) => {
-  //       ordersArray.push({ ...doc.data() });
-  //     });
-  //     setOrder(ordersArray);
-  //     console.log(ordersArray);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const [order, setOrder] = useState([]);
+  const getOrderData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDocs(collection(fireDB, "order"));
+      const ordersArray = [];
+      result.forEach((doc) => {
+        ordersArray.push({ ...doc.data() });
+      });
+      setOrder(ordersArray);
+      console.log(ordersArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getProductData();
+    getOrderData();
+  }, []);
 
   // const uploadImage = async (file) => {
   //   const storageRef = ref(Storage, `carasoule/${file.name}`);
@@ -233,6 +235,7 @@ const myState = (props) => {
         carasoule,
         user,
         deleteCarasoule,
+        order,
       }}
     >
       {props.children}
