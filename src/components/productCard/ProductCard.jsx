@@ -9,7 +9,7 @@ import foods from "../../assets/foods.png";
 import myContext from "../../context/data/myContext";
 
 
-function MenuCard({ title, description, price, image }) {
+function MenuCard({ title, description, price, image, link }) {
   return (
     <div className="max-w-sm bg-white rounded-full shadow-lg overflow-hidden">
       <img className="w-full h-60 object-cover" src={image} alt={title} />
@@ -20,9 +20,9 @@ function MenuCard({ title, description, price, image }) {
         {/* <p className="text-gray-600 mt-2">{description}</p> */}
         <div className="mt-4 flex justify-center items-center">
           {/* <span className="text-lg font-bold text-green-600">Rs.{price}</span> */}
-          <Link to="/allproducts">
+          <Link to={link || "/allproducts"}>
             <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-              Order Now
+              {title === "Tickets" ? "Book Now" : "Order Now"}
             </button>
           </Link>
         </div>
@@ -51,6 +51,7 @@ function App() {
       description: "Comming soon",
       // price: "10.99",
       image: ticket,
+      link : "/tickets",
     },
     {
       title: "Grocery",
@@ -81,6 +82,7 @@ function App() {
             price={item.price}
             image={item.image}
             mode = {mode}
+            link = {item.link}
 
           />
         ))}
