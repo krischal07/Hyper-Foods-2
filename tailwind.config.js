@@ -10,6 +10,6 @@ export default {
   },
   plugins: [flowbite.plugin(), require("daisyui")],
   daisyui: {
-    themes: [],
+    themes: ["cupcake"],
   },
 };

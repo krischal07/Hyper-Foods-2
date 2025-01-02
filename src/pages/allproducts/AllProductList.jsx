@@ -20,21 +20,20 @@ function AllProducts() {
   }, [cartItems]);
 
   const [prices, setPrices] = useState([]);
-  useEffect(() => {
-    setPrices(product.map((item) => item.price));
-    console.log("prices are loaded");
-  }, [product]);
   // console.log("products:", product[4].price);
   // console.log("price in use state:", prices);
 
   // const [prices, setPrices] = useState("Hello");
 
   // console.log(p);
-  const [activeOptions, setActiveOptions] = useState(
-    product.map(() => "Room Temperature")
-  );
+  const [activeOptions, setActiveOptions] = useState([]);
   console.log("activeOptions: ", activeOptions);
 
+  useEffect(() => {
+    setPrices(product.map((item) => item.price));
+    setActiveOptions(product.map(() => "Room Temperature"));
+    console.log("prices are loaded");
+  }, [product]);
   // const handleChillBtn = (index, extraPrice) => {
   //   setPrices((prevPrice) => {
   //     const updatedPrices = [...prevPrice];
@@ -121,7 +120,7 @@ function AllProducts() {
                           <button
                             className={`${
                               activeOptions[index] === "Chilled"
-                                ? "btn btn-primary"
+                                ? "btn btn-primary "
                                 : "btn btn-outline btn-primary"
                             } px-3 py-1 rounded`}
                             onClick={() =>
