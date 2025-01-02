@@ -1,13 +1,18 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import menuImage from "../../assets/menu.png";
+import restaurant from "../../assets/restaurant.jpg";
+import liquor from "../../assets/liquor.png";
+import ticket from "../../assets/ticket.png";
+import grocery from "../../assets/grocery.jpg";
+import foods from "../../assets/foods.png";
 import myContext from "../../context/data/myContext";
 
 
 function MenuCard({ title, description, price, image }) {
   return (
-    <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden">
-      <img className="w-full h-80 object-cover" src={image} alt={title} />
+    <div className="max-w-sm bg-white rounded-full shadow-lg overflow-hidden">
+      <img className="w-full h-60 object-cover" src={image} alt={title} />
       <div className="p-6">
         <h2 className="text-xl font-semibold text-center text-gray-800">
           {title}
@@ -33,25 +38,31 @@ function App() {
       title: "Restaurant",
       description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
       price: "8.99",
-      image: menuImage,
+      image: restaurant,
     },
     {
       title: "Liquor",
       description: "Cheesy pizza with your favorite toppings and toppings.",
       price: "12.49",
-      image: menuImage,
+      image: liquor,
+    },
+    {
+      title: "Tickets",
+      description: "Comming soon",
+      // price: "10.99",
+      image: ticket,
     },
     {
       title: "Grocery",
       description: "A healthy mix of greens, veggies, and dressing.",
       price: "6.99",
-      image: menuImage,
+      image: grocery,
     },
     {
       title: "Foods",
       description: "Rich and creamy pasta made to perfection.",
       price: "10.99",
-      image: menuImage,
+      image: foods,
     },
   ];
 
