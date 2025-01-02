@@ -1,18 +1,15 @@
-import { someModule } from 'some-package';
+import { someModule } from "some-package";
 
 const flowbite = require("flowbite-react/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    flowbite.content(),
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
     extend: {},
   },
-  plugins: [
-    flowbite.plugin(),
-  ],
-}
+  plugins: [flowbite.plugin(), require("daisyui")],
+  daisyui: {
+    themes: [],
+  },
+};
