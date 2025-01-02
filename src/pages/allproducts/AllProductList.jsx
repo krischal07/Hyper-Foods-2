@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
@@ -19,6 +19,50 @@ function AllProducts() {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  const [prices, setPrices] = useState([]);
+  useEffect(() => {
+    setPrices(product.map((item) => item.price));
+    console.log("prices are loaded");
+  }, [product]);
+  // console.log("products:", product[4].price);
+  // console.log("price in use state:", prices);
+
+  // const [prices, setPrices] = useState("Hello");
+
+  // console.log(p);
+  const [activeOptions, setActiveOptions] = useState(
+    product.map(() => "Room Temperature")
+  );
+  console.log("activeOptions: ", activeOptions);
+
+  // const handleChillBtn = (index, extraPrice) => {
+  //   setPrices((prevPrice) => {
+  //     const updatedPrices = [...prevPrice];
+  //     updatedPrices[index] = extraPrice;
+  //     console.log("updatedPrice", updatedPrices);
+  //     console.log("extraPrice", extraPrice);
+  //     return updatedPrices;
+  //   });
+  // };
+
+  const handleOptionClick = (index, option, price) => {
+    setActiveOptions((prevOptions) => {
+      const updatedOptions = [...prevOptions];
+      updatedOptions[index] = option;
+      console.log("updatedOptions", updatedOptions);
+      console.log("option", option);
+      return updatedOptions;
+    });
+
+    setPrices((prevPrice) => {
+      const updatedPrices = [...prevPrice];
+      updatedPrices[index] = price;
+      console.log("updatedPrice", updatedPrices);
+      console.log("price", price);
+      return updatedPrices;
+    });
+  };
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-8 md:py-16 mx-auto">
@@ -35,6 +79,8 @@ function AllProducts() {
         <div className="flex flex-wrap -m-4">
           {product.map((item, index) => {
             const { title, price, imageUrl, actualPrice } = item;
+
+            console.log(item);
 
             return (
               <div className="p-4 md:w-1/4 drop-shadow-lg" key={index}>
@@ -53,11 +99,51 @@ function AllProducts() {
                     />
                   </div>
                   <div className="p-5 border-t-2">
+                    <div className="">
+                      {item.extra_option === "Yes" ? (
+                        <div className="flex justify-around">
+                          <button
+                            className={`${
+                              activeOptions[index] === "Room Temperature"
+                                ? "btn btn-success mx-1"
+                                : "btn btn-outline btn-success"
+                            } px-3 py-1 rounded`}
+                            onClick={() =>
+                              handleOptionClick(
+                                index,
+                                "Room Temperature",
+                                price
+                              )
+                            }
+                          >
+                            Room Temperature
+                          </button>
+                          <button
+                            className={`${
+                              activeOptions[index] === "Chilled"
+                                ? "btn btn-primary"
+                                : "btn btn-outline btn-primary"
+                            } px-3 py-1 rounded`}
+                            onClick={() =>
+                              handleOptionClick(
+                                index,
+                                "Chilled",
+                                item.extra_price
+                              )
+                            }
+                          >
+                            {item.extra_name}
+                          </button>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                     <h2
                       className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      Hyper Foods
+                      {item.category}
                     </h2>
                     <h1
                       className="title-font text-lg font-medium text-gray-900 mb-3"
@@ -91,7 +177,7 @@ function AllProducts() {
                         fontSize: 25,
                       }}
                     >
-                      Rs. {price}
+                      Rs. {prices[index]}
                     </p>
                     <div className="flex justify-center">
                       <button
@@ -112,5 +198,4 @@ function AllProducts() {
     </section>
   );
 }
-
 export default AllProducts;
