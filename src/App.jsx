@@ -26,7 +26,7 @@ import LiquorInfo from "./pages/liqrouinfo/LiquorInfo";
 const App = () => {
   return (
     <MyState>
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
