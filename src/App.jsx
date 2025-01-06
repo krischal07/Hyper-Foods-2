@@ -17,6 +17,7 @@ import Productinf from "./pages/productInfo/Productinf";
 import AddProduct from "./pages/admin/page/AddProduct";
 import UpdateProduct from "./pages/admin/page/UpdateProduct";
 import AllProducts from "./pages/allproducts/AllProducts";
+import Tickets from "./pages/Tickets/Tickets";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UploadCarasoule from "./pages/admin/page/Carasoule/UploadCarasoule";
@@ -46,6 +47,9 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+              {/* for ticket route */}
+          <Route path="/tickets" element={<Tickets />} />
+
           <Route path="/productInfo/:id" element={<Productinf />} />
           <Route
             path="/addproduct"
