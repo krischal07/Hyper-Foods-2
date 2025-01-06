@@ -16,8 +16,9 @@ function DashboardTab() {
     carasoule,
     user,
     deleteCarasoule,
+    order,
   } = context;
-  console.log(user);
+  console.log("order", order);
 
   let [isOpen, setIsOpen] = useState(false);
 
@@ -314,7 +315,6 @@ function DashboardTab() {
               </div>
             </TabPanel>
             <TabPanel>
-              {/* <Order order={order} setOrder={setOrder} setLoading={setLoading} /> */}
               <div className="relative overflow-x-auto mb-16">
                 <h1
                   className=" text-center mb-5 text-3xl font-semibold underline"
@@ -332,7 +332,7 @@ function DashboardTab() {
                   >
                     <tr>
                       <th scope="col" className="px-6 py-3">
-                        Payment Id
+                        Order Id
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Image
@@ -343,17 +343,12 @@ function DashboardTab() {
                       <th scope="col" className="px-6 py-3">
                         Price
                       </th>
-                      <th scope="col" className="px-6 py-3">
-                        Category
-                      </th>
+
                       <th scope="col" className="px-6 py-3">
                         Name
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Address
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Pincode
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Phone Number
@@ -364,89 +359,111 @@ function DashboardTab() {
                       <th scope="col" className="px-6 py-3">
                         Date
                       </th>
+                      <th scope="col" className="px-6 py-3">
+                        Status
+                      </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr
-                      className="bg-gray-50 border-b  dark:border-gray-700"
-                      style={{
-                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                        color: mode === "dark" ? "white" : "",
-                      }}
-                    >
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        3393939
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-black whitespace-nowrap"
-                      >
-                        <img
-                          className="w-16"
-                          src="https://dummyimage.com/720x400"
-                          alt="img"
-                        />
-                      </th>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Title
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        ₹100
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        pots
-                      </td>
+                  {order
+                    .sort((a, b) => {
+                      const dateA = new Date(a.addressInfo.date); // Ensure this is the correct date field
+                      const dateB = new Date(b.addressInfo.date);
 
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        name
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        india
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        82828
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        929929929929
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        kkakka@gmail.com
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        12 Aug 2019
-                      </td>
-                    </tr>
-                  </tbody>
+                      if (isNaN(dateA) || isNaN(dateB)) {
+                        return 0; // If the date is invalid, don't change the order
+                      }
+
+                      return dateB - dateA;
+                    })
+                    .map((item, index) => {
+                      return (
+                        <tbody>
+                          <tr
+                            className="bg-gray-50 border-b  dark:border-gray-700"
+                            style={{
+                              backgroundColor:
+                                mode === "dark" ? "rgb(46 49 55)" : "",
+                              color: mode === "dark" ? "white" : "",
+                            }}
+                          >
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.orderId}
+                            </td>
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-medium text-black whitespace-nowrap"
+                            >
+                              <img
+                                className="w-16"
+                                src={item.cartItems.map((ci) => {
+                                  return ci.imageUrl;
+                                })}
+                                alt="img"
+                              />
+                            </th>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.cartItems.map((t) => t.title).join(", ")}{" "}
+                              {/* Join all titles */}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              ₹
+                              {item.cartItems.reduce(
+                                (sum, ci) =>
+                                  sum + parseInt(ci.price) * ci.quantity,
+                                0
+                              ) + 100}{" "}
+                              {/* Calculate total price */}
+                            </td>
+
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.addressInfo.name}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.addressInfo.address}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.addressInfo.phone}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.userId.email}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              {item.addressInfo.date}
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              12 Aug 2019
+                            </td>
+                          </tr>
+                        </tbody>
+                      );
+                    })}
                 </table>
               </div>
             </TabPanel>

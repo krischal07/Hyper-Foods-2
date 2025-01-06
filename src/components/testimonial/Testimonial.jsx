@@ -14,7 +14,7 @@ function Testimonial() {
     <div>
       <section
         className={`py-12 sm:py-16 lg:py-20 ${
-          mode === "dark" ? "bg-[rgb(14,24,39)]" : "bg-gray-50"
+          mode === "dark" ? "bg-[rgb(14,24,39)]" : "bg-white"
         }`}
       >
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
