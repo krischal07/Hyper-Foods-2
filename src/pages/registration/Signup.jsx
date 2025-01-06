@@ -329,25 +329,25 @@ function Signup() {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
+      const googleUser = result.user;
 
       // Add user data to Firestore
       const userDoc = {
-        name: user.displayName,
-        uid: user.uid,
-        email: user.email,
-        phoneNumber: phoneNumber, // Optional: You can also add phone number from input
+        name: googleUser.displayName || "Google User", // Fallback if displayName is null
+        uid: googleUser.uid,
+        email: googleUser.email || "",
+        phoneNumber: phoneNumber || "Not provided", // Optional: Use phone input if provided
         time: Timestamp.now(),
       };
 
       const userRef = collection(fireDB, "users");
       await addDoc(userRef, userDoc);
 
-      toast.success("Google SignUp Successful");
+      toast.success("Google Sign-Up Successful");
       setLoading(false);
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.error("Google Sign-Up Error:", error);
+      toast.error(error.message || "An error occurred during Google Sign-Up.");
       setLoading(false);
     }
   };
@@ -355,42 +355,45 @@ function Signup() {
   // Email/Password signup with email verification
   const signup = async () => {
     setLoading(true);
-    if (name === "" || email === "" || password === "" || phoneNumber === "") {
+
+    // Validation checks
+    if (!name || !email || !password || !phoneNumber) {
       setLoading(false);
-      return toast.error("All fields are required!!");
+      return toast.error("All fields are required!");
     }
 
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
       setLoading(false);
-      return toast.error("Invalid Number");
+      return toast.error("Invalid phone number format. Must be 10 digits.");
     }
 
     try {
-      const users = await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(auth, email, password);
 
       // Send email verification
-      await sendEmailVerification(users.user);
+      await sendEmailVerification(result.user);
       toast.success("A verification email has been sent. Please verify your email before logging in.");
 
       // Add user to Firestore
-      const user = {
+      const newUser = {
         name: name,
-        uid: users.user.uid,
-        email: users.user.email,
+        uid: result.user.uid,
+        email: result.user.email,
         phoneNumber: phoneNumber,
         time: Timestamp.now(),
       };
       const userRef = collection(fireDB, "users");
-      await addDoc(userRef, user);
+      await addDoc(userRef, newUser);
 
+      // Reset form fields
       setName("");
       setEmail("");
       setPassword("");
       setPhoneNumber("");
       setLoading(false);
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.error("Sign-Up Error:", error);
+      toast.error(error.message || "An error occurred during Sign-Up.");
       setLoading(false);
     }
   };
@@ -404,7 +407,7 @@ function Signup() {
           <img src={signuplogo} alt="App Logo" className="w-30 h-20 object-contain" />
         </div>
 
-        <div className="">
+        <div>
           <h1 className="text-center text-black text-xl mb-4 font-bold">Signup</h1>
         </div>
         <div>
@@ -475,4 +478,5 @@ function Signup() {
 }
 
 export default Signup;
+
 
