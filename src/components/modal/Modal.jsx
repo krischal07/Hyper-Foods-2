@@ -9,6 +9,7 @@ export default function Modal({
   setAddress,
   setPhone,
   buyNow,
+  setTransaction,
 }) {
   let [isOpen, setIsOpen] = useState(false);
 
@@ -114,6 +115,23 @@ export default function Modal({
                                 className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
+                            </div>
+
+                            <div>
+                              <button
+                                onClick={() => setTransaction("bank")}
+                                className="btn btn-success"
+                                type="button"
+                              >
+                                Nabil
+                              </button>
+                              <button
+                                onClick={() => setTransaction("cod")}
+                                className="btn btn-primary"
+                                type="button"
+                              >
+                                COD
+                              </button>
                             </div>
                           </form>
                           <button

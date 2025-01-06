@@ -52,7 +52,7 @@ function Cart() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [transaction, setTransaction] = useState("");
   const generateOrderId = () => {
     return Math.floor(1000 + Math.random() * 90000).toString();
   };
@@ -63,6 +63,7 @@ function Cart() {
     const orderInfo = {
       orderId,
       cartItems,
+      transaction,
       addressInfo,
       date: new Date().toLocaleString("en-US", {
         name: "short",
@@ -285,6 +286,8 @@ function Cart() {
               setAddress={setAddress}
               setPhone={setPhone}
               buyNow={buyNow}
+              transaction={transaction}
+              setTransaction={setTransaction}
             />
           </div>
         </div>
