@@ -372,7 +372,7 @@ function Signup() {
 
       // Send email verification
       await sendEmailVerification(result.user);
-      toast.success("A verification email has been sent. Please verify your email before logging in.");
+      toast.success("Email has been confirmed. Please login");
 
       // Add user to Firestore
       const newUser = {
