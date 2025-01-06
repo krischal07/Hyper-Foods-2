@@ -15,7 +15,7 @@ const Home = () => {
       {/* <Filter /> */}
       <ProductCard />
       <OrderNow />
-      {/* <Testimonial /> */}
+      <Testimonial />
     </Layout>
   );
 };
