@@ -22,6 +22,7 @@ import Tickets from "./pages/Tickets/Tickets";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UploadCarasoule from "./pages/admin/page/Carasoule/UploadCarasoule";
+import LiquorInfo from "./pages/liqrouinfo/LiquorInfo";
 
 // Wrap your Home route with PageWithTawk
 const PageWithTawk = ({ children }) => {
@@ -66,8 +67,9 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-              {/* for ticket route */}
+          {/* for ticket route */}
           <Route path="/tickets" element={<Tickets />} />
+          <Route path="/liqourinfo" element={<LiquorInfo />} />
 
           <Route path="/productInfo/:id" element={<Productinf />} />
           <Route

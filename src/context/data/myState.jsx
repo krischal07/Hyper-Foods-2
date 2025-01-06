@@ -12,6 +12,7 @@ import {
   QuerySnapshot,
   setDoc,
   Timestamp,
+  where,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
@@ -214,18 +215,33 @@ const myState = (props) => {
       setLoading(false);
     }
   };
+
+  const [liquorItems, setLiquorItems] = useState([]);
+  const fetchLiquorItems = async () => {
+    setLoading(true);
+    try {
+      const q = query(
+        collection(fireDB, "products"),
+        where("parentCategory", "==", "Liquors")
+      );
+      const querySnapshot = await getDocs(q);
+      const items = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setLoading(false);
+      setLiquorItems(items);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getProductData();
     getOrderData();
+    fetchLiquorItems();
   }, []);
-
-  // const uploadImage = async (file) => {
-  //   const storageRef = ref(Storage, `carasoule/${file.name}`);
-  //   await uploadBytes(storageRef, file);
-  //   const url = await getDownloadURL(storageRef);
-  //   return url;
-  // };
-
   return (
     <myContext.Provider
       value={{
@@ -244,6 +260,7 @@ const myState = (props) => {
         user,
         deleteCarasoule,
         order,
+        liquorItems,
       }}
     >
       {props.children}

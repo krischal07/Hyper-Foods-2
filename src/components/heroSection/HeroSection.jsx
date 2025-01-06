@@ -23,25 +23,17 @@ const HeroSection = () => {
 
     <div className="h-56 sm:h-64 xl:h-[450px] 2xl:h-96 p-4">
       <Carousel slide={false}>
-        <img src={imgcara} alt="..." className="w-full h-full object-cover" />
         {carasoule.map((item, index) => {
-          {
-            /* const { imageUrl } = item; */
-          }
           return (
-            <img
-              src={item.imageUrl}
-              alt="..."
-              className="w-full h-full object-cover"
-            />
+            <div>
+              <img
+                src={item.imageUrl}
+                alt="..."
+                className="w-full h-full object-cover"
+              />
+            </div>
           );
         })}
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/004/299/835/original/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg"
-          alt=""
-        />
-
-        <img src={heroimg} alt="..." className="w-full h-full object-cover" />
       </Carousel>
     </div>
   );
