@@ -14,16 +14,23 @@ function Signup() {
    const [name, setName] = useState("")
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
+   const [phoneNumber, setPhoneNumber] = useState("")
+
 
    const context = useContext(myContext)
    const { loading, setLoading } = context
     
    const signup = async () => {
       setLoading(true)
-      console.log(name, email, password)
-      if (name === "" || email === "" || password === "") {
+      console.log(name, email, password,phoneNumber)
+      if (name === "" || email === "" || password === ""|| phoneNumber === "") {
          setLoading(false)
          return toast.error("All fields are required!!")
+      }
+
+      if(phoneNumber.length !==10 || isNaN(phoneNumber)){
+         setLoading(false)
+         return toast.error("Invalid Number")
       }
       try {
          const users = await createUserWithEmailAndPassword(auth, email, password)
@@ -31,6 +38,7 @@ function Signup() {
             name: name,
             uid: users.user.uid,
             email: users.user.email,
+            phoneNumber: phoneNumber,
             time: Timestamp.now()
          }
          const userRef = collection(fireDB, "users")
@@ -39,6 +47,7 @@ function Signup() {
          setName("")
          setEmail("")
          setPassword("")
+         setPhoneNumber("")
          setLoading(false)
       } catch (error) {
          console.log(error)
@@ -90,6 +99,15 @@ function Signup() {
                   placeholder='Password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+               />
+            </div>
+            <div>
+               <input
+                  type="text"
+                  className='bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-black outline-none'
+                  placeholder='Phone Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                />
             </div>
             <div className='flex justify-center mb-3'>

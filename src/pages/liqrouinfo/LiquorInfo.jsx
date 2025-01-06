@@ -117,7 +117,7 @@ function LiquorInfo() {
                     <div className="p-5 border-t-2">
                       <div className="">
                         {item.extra_option === "Yes" ? (
-                          <div className="flex justify-around">
+                          <div className="flex justify-around space-x-2">
                             <button
                               className={`${
                                 activeOptions[index] === "Room Temperature"
