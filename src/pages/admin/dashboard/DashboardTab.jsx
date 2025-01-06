@@ -2,7 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import myContext from "../../../context/data/myContext";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-import { FaUser, FaCartPlus, FaDatabase } from "react-icons/fa";
+import {
+  FaUser,
+  FaCartPlus,
+  FaDatabase,
+  FaCheck,
+  FaCross,
+  FaTimes,
+} from "react-icons/fa";
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -33,9 +40,80 @@ function DashboardTab() {
   const add = () => {
     window.location.href = "/addproduct";
   };
+
+  const [statusMap, setStatusMap] = useState({});
+  const [selectedButton, setSelectedButton] = useState([]);
+
+  // const actionBtn = (option, orderId) => {
+  //   setStatusMap((prevState) => {
+  //     let newStatus = prevState[orderId] || "Pending";
+  //     if (option === "Done") {
+  //       newStatus = "Completed";
+  //       setSelectedButton((prev) => ({
+  //         ...prev,
+  //         [orderId]: { done: true, failed: false }, // Track which button is selected
+  //       }));
+  //     } else if (option === "Failed") {
+  //       newStatus = "Failed";
+  //       setSelectedButton((prev) => ({
+  //         ...prev,
+  //         [orderId]: { done: false, failed: true }, // Track which button is selected
+  //       }));
+  //     } else {
+  //       newStatus = "Pending";
+  //     }
+  //     setSelectedButton((prev) => ({
+  //       ...prev,
+  //       [orderId]: { done: false, failed: false }, // Reset button selection
+  //     }));
+  //     return {
+  //       ...prevState,
+  //       [orderId]: newStatus,
+  //     };
+  //   });
+  // };
+
+  const actionBtn = (option, orderId) => {
+    setStatusMap((prevState) => {
+      // Track current status of the order or default to "Pending"
+      let newStatus = prevState[orderId] || "Pending";
+
+      if (option === "Done") {
+        // Toggle logic: if already selected, deselect and set to "Pending"
+        if (selectedButton[orderId]?.done) {
+          newStatus = "Pending"; // If done is selected, deselect and reset to "Pending"
+        } else {
+          newStatus = "Completed"; // Otherwise, mark as "Completed"
+        }
+
+        setSelectedButton((prev) => ({
+          ...prev,
+          [orderId]: { done: !selectedButton[orderId]?.done, failed: false }, // Toggle done status
+        }));
+      } else if (option === "Failed") {
+        // Toggle logic: if already selected, deselect and set to "Pending"
+        if (selectedButton[orderId]?.failed) {
+          newStatus = "Pending"; // If failed is selected, deselect and reset to "Pending"
+        } else {
+          newStatus = "Failed"; // Otherwise, mark as "Failed"
+        }
+
+        setSelectedButton((prev) => ({
+          ...prev,
+          [orderId]: { done: false, failed: !selectedButton[orderId]?.failed }, // Toggle failed status
+        }));
+      }
+
+      return {
+        ...prevState,
+        [orderId]: newStatus, // Update the status for the current order
+      };
+    });
+  };
+  console.log("statusMap", statusMap);
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto ">
         <div className="tab container mx-auto ">
           <Tabs defaultIndex={0} className=" ">
             <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-2 text-center gap-4   md:justify-center mb-10 ">
@@ -314,169 +392,219 @@ function DashboardTab() {
                 </div>
               </div>
             </TabPanel>
+
             <TabPanel>
-              <div className="relative overflow-x-auto mb-16">
+              <div className="px-4 md:px-0 mb-16">
                 <h1
-                  className=" text-center mb-5 text-3xl font-semibold underline"
+                  className="text-center mb-5 text-3xl font-semibold underline text-blue-700"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Order Details
                 </h1>
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                  <thead
-                    className="text-xs text-black uppercase bg-gray-200 "
-                    style={{
-                      backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                      color: mode === "dark" ? "white" : "",
-                    }}
-                  >
-                    <tr>
-                      <th scope="col" className="px-6 py-3">
-                        Order Id
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Image
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Title
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Price
-                      </th>
+                <div className="relative overflow-x-auto">
+                  <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-collapse">
+                    <thead
+                      className="text-xs text-black uppercase bg-gray-200 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]"
+                      style={{
+                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+                        color: mode === "dark" ? "white" : "",
+                      }}
+                    >
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          S.N
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Order ID
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Items
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Total Price
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Details
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Date
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Payment
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Status
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border-2 border-black font-bold text-lg"
+                        >
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    {order
+                      .sort((a, b) => {
+                        const dateA = new Date(a.addressInfo.date);
+                        const dateB = new Date(b.addressInfo.date);
+                        return isNaN(dateA) || isNaN(dateB) ? 0 : dateB - dateA;
+                      })
+                      .map((item, index) => {
+                        const totalPrice =
+                          item.cartItems.reduce(
+                            (sum, ci) => sum + parseInt(ci.price) * ci.quantity,
+                            0
+                          ) + 100;
+                        const currentStatus =
+                          statusMap[item.orderId] || "Pending";
+                        const buttonSelection = selectedButton[
+                          item.orderId
+                        ] || { done: false, failed: false };
 
-                      <th scope="col" className="px-6 py-3">
-                        Name
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Address
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Phone Number
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Email
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Date
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Status
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Action
-                      </th>
-                    </tr>
-                  </thead>
-                  {order
-                    .sort((a, b) => {
-                      const dateA = new Date(a.addressInfo.date); // Ensure this is the correct date field
-                      const dateB = new Date(b.addressInfo.date);
+                        return (
+                          <tbody key={item.orderId}>
+                            {/* Group items by orderId */}
+                            <tr
+                              className="bg-gray-50 border-b dark:border-gray-700"
+                              style={{
+                                backgroundColor:
+                                  mode === "dark" ? "rgb(46 49 55)" : "",
+                                color: mode === "dark" ? "white" : "",
+                              }}
+                            >
+                              <td
+                                className="px-6 py-4 border-2 border-black font-bold text-lg"
+                                rowSpan={item.cartItems.length}
+                              >
+                                {index + 1}
+                              </td>
+                              <td
+                                className="px-6 py-4 border-2 border-black font-bold text-lg"
+                                rowSpan={item.cartItems.length}
+                              >
+                                {item.orderId}
+                              </td>
 
-                      if (isNaN(dateA) || isNaN(dateB)) {
-                        return 0; // If the date is invalid, don't change the order
-                      }
+                              {/* Combine item details in one column */}
+                              <td className="px-6 py-4 border-2 border-black">
+                                {item.cartItems.map((product, i) => (
+                                  <div key={i} className="mb-2">
+                                    <span className="font-bold">
+                                      {product.title}
+                                    </span>
+                                    <span> | Quantity: {product.quantity}</span>
+                                    <span> | Price: ₹{product.price}</span>
+                                  </div>
+                                ))}
+                              </td>
+                              <td className="px-6 py-4 border-2 border-black">
+                                ₹{totalPrice}
+                              </td>
 
-                      return dateB - dateA;
-                    })
-                    .map((item, index) => {
-                      return (
-                        <tbody>
-                          <tr
-                            className="bg-gray-50 border-b  dark:border-gray-700"
-                            style={{
-                              backgroundColor:
-                                mode === "dark" ? "rgb(46 49 55)" : "",
-                              color: mode === "dark" ? "white" : "",
-                            }}
-                          >
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.orderId}
-                            </td>
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-medium text-black whitespace-nowrap"
-                            >
-                              <img
-                                className="w-16"
-                                src={item.cartItems[0].imageUrl}
-                                alt="img"
-                              />
-                            </th>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.cartItems.map((t) => t.title).join(", ")}{" "}
-                              {/* Join all titles */}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              ₹
-                              {item.cartItems.reduce(
-                                (sum, ci) =>
-                                  sum + parseInt(ci.price) * ci.quantity,
-                                0
-                              ) + 100}{" "}
-                              {/* Calculate total price */}
-                            </td>
+                              {/* Combine name, address, and phone in one column with labels */}
+                              <td className="px-6 py-4 border-2 border-black">
+                                <div>
+                                  <span className="font-bold">Name:</span>{" "}
+                                  {item.addressInfo.name}
+                                  <br />
+                                  <span className="font-bold">
+                                    Address:
+                                  </span>{" "}
+                                  {item.addressInfo.address}
+                                  <br />
+                                  <span className="font-bold">Phone:</span>{" "}
+                                  {item.addressInfo.phone}
+                                </div>
+                              </td>
 
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.addressInfo.name}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.addressInfo.address}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.addressInfo.phone}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.userId.email}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              {item.addressInfo.date}
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              Pending
-                            </td>
-                            <td
-                              className="px-6 py-4 text-black "
-                              style={{ color: mode === "dark" ? "white" : "" }}
-                            >
-                              <button className="btn btn-success">COD</button>
-                              <button className="btn btn-primary">
-                                Online
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      );
-                    })}
-                </table>
+                              <td
+                                className="px-6 py-4 border-2 border-black"
+                                rowSpan={item.cartItems.length}
+                              >
+                                {item.addressInfo.date}
+                              </td>
+                              <td
+                                className="px-6 py-4 border-2 border-black"
+                                rowSpan={item.cartItems.length}
+                              >
+                                {item.transaction}
+                              </td>
+                              <td
+                                // className="px-6 py-4 border-2 border-black"
+                                className={`${
+                                  currentStatus === "Completed"
+                                    ? "px-6 py-4 text-green-600 font-bold  border-2 border-black"
+                                    : "px-6 py-4 text-red-600 font-bold  border-2 border-black"
+                                }`}
+                                rowSpan={item.cartItems.length}
+                              >
+                                {currentStatus}
+                              </td>
+                              <td
+                                className="px-6 py-4 border-2 border-black"
+                                rowSpan={item.cartItems.length}
+                              >
+                                <div className="flex">
+                                  <button
+                                    className={`mx-2 btn ${
+                                      buttonSelection.done
+                                        ? "btn-success"
+                                        : "btn-outline"
+                                    }`}
+                                    onClick={() =>
+                                      actionBtn("Done", item.orderId)
+                                    } // Set status to "Completed"
+                                  >
+                                    <FaCheck />
+                                  </button>
+                                  {/* Failed button with conditional styling */}
+                                  <button
+                                    className={`btn ${
+                                      buttonSelection.failed
+                                        ? "btn-error"
+                                        : "btn-outline"
+                                    }`}
+                                    onClick={() =>
+                                      actionBtn("Failed", item.orderId)
+                                    } // Set status to "Canceled"
+                                  >
+                                    <FaTimes />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
+                  </table>
+                </div>
               </div>
             </TabPanel>
+
             <TabPanel>
               {/* <User addressInfo={addressInfo} setAddressInfo={setAddressInfo} setLoading={setLoading} /> */}
               <div className="relative overflow-x-auto mb-10">

@@ -7,7 +7,7 @@ import Navbar from "../../../components/navbar/Navbar";
 
 function Dashboard() {
   const context = useContext(myContext);
-  const { mode, product, user } = context;
+  const { mode, product, user, order } = context;
   //   console.log("length of products: " + product.length);
   //   console.log("length of users: " + user.length);
   return (
@@ -62,7 +62,7 @@ function Dashboard() {
                   className="title-font font-medium text-3xl text-black fonts1"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  10
+                  {order.length}
                 </h2>
                 <p
                   className=" text-blue-800  font-bold"
