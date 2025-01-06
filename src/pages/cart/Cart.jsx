@@ -116,9 +116,13 @@ function Cart() {
     address,
     phone,
     date: new Date().toLocaleString("en-US", {
-      name: "short",
-      day: "2-digit",
       year: "numeric",
+      month: "2-digit", // Ensures 2-digit month format (e.g., 01, 12)
+      day: "2-digit", // Ensures 2-digit day format (e.g., 01, 31)
+      hour: "2-digit", // Adds hour (e.g., 12)
+      minute: "2-digit", // Adds minute (e.g., 30)
+      second: "2-digit", // Adds second (e.g., 45)
+      hour12: true,
     }),
   };
   console.log(addressInfo);
