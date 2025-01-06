@@ -199,6 +199,15 @@ const myState = (props) => {
   };
 
   const [order, setOrder] = useState([]);
+
+  // const updateOrderStatus = (orderId, newStatus) => {
+  //   setOrder((prevOrder) => {
+  //     prevOrder.map((order) =>
+  //       order.orderId === orderId ? { ...order, status: newStatus } : order
+  //     );
+  //   });
+  // };
+
   const getOrderData = async () => {
     setLoading(true);
     try {
@@ -215,7 +224,6 @@ const myState = (props) => {
       setLoading(false);
     }
   };
-
   const [liquorItems, setLiquorItems] = useState([]);
   const fetchLiquorItems = async () => {
     setLoading(true);
