@@ -362,6 +362,9 @@ function DashboardTab() {
                       <th scope="col" className="px-6 py-3">
                         Status
                       </th>
+                      <th scope="col" className="px-6 py-3">
+                        Action
+                      </th>
                     </tr>
                   </thead>
                   {order
@@ -398,9 +401,7 @@ function DashboardTab() {
                             >
                               <img
                                 className="w-16"
-                                src={item.cartItems.map((ci) => {
-                                  return ci.imageUrl;
-                                })}
+                                src={item.cartItems[0].imageUrl}
                                 alt="img"
                               />
                             </th>
@@ -458,7 +459,16 @@ function DashboardTab() {
                               className="px-6 py-4 text-black "
                               style={{ color: mode === "dark" ? "white" : "" }}
                             >
-                              12 Aug 2019
+                              Pending
+                            </td>
+                            <td
+                              className="px-6 py-4 text-black "
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              <button className="btn btn-success">COD</button>
+                              <button className="btn btn-primary">
+                                Online
+                              </button>
                             </td>
                           </tr>
                         </tbody>
