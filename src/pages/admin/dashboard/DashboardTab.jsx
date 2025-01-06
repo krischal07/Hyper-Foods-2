@@ -43,70 +43,31 @@ function DashboardTab() {
 
   const [statusMap, setStatusMap] = useState({});
   const [selectedButton, setSelectedButton] = useState([]);
-
-  // const actionBtn = (option, orderId) => {
-  //   setStatusMap((prevState) => {
-  //     let newStatus = prevState[orderId] || "Pending";
-  //     if (option === "Done") {
-  //       newStatus = "Completed";
-  //       setSelectedButton((prev) => ({
-  //         ...prev,
-  //         [orderId]: { done: true, failed: false }, // Track which button is selected
-  //       }));
-  //     } else if (option === "Failed") {
-  //       newStatus = "Failed";
-  //       setSelectedButton((prev) => ({
-  //         ...prev,
-  //         [orderId]: { done: false, failed: true }, // Track which button is selected
-  //       }));
-  //     } else {
-  //       newStatus = "Pending";
-  //     }
-  //     setSelectedButton((prev) => ({
-  //       ...prev,
-  //       [orderId]: { done: false, failed: false }, // Reset button selection
-  //     }));
-  //     return {
-  //       ...prevState,
-  //       [orderId]: newStatus,
-  //     };
-  //   });
-  // };
-
   const actionBtn = (option, orderId) => {
     setStatusMap((prevState) => {
-      // Track current status of the order or default to "Pending"
       let newStatus = prevState[orderId] || "Pending";
-
       if (option === "Done") {
-        // Toggle logic: if already selected, deselect and set to "Pending"
-        if (selectedButton[orderId]?.done) {
-          newStatus = "Pending"; // If done is selected, deselect and reset to "Pending"
-        } else {
-          newStatus = "Completed"; // Otherwise, mark as "Completed"
-        }
-
+        newStatus = "Completed";
         setSelectedButton((prev) => ({
           ...prev,
-          [orderId]: { done: !selectedButton[orderId]?.done, failed: false }, // Toggle done status
+          [orderId]: { done: true, failed: false }, // Track which button is selected
         }));
       } else if (option === "Failed") {
-        // Toggle logic: if already selected, deselect and set to "Pending"
-        if (selectedButton[orderId]?.failed) {
-          newStatus = "Pending"; // If failed is selected, deselect and reset to "Pending"
-        } else {
-          newStatus = "Failed"; // Otherwise, mark as "Failed"
-        }
-
+        newStatus = "Failed";
         setSelectedButton((prev) => ({
           ...prev,
-          [orderId]: { done: false, failed: !selectedButton[orderId]?.failed }, // Toggle failed status
+          [orderId]: { done: false, failed: true }, // Track which button is selected
         }));
+      } else {
+        newStatus = "Pending";
       }
-
+      setSelectedButton((prev) => ({
+        ...prev,
+        [orderId]: { done: false, failed: false }, // Reset button selection
+      }));
       return {
         ...prevState,
-        [orderId]: newStatus, // Update the status for the current order
+        [orderId]: newStatus,
       };
     });
   };
@@ -415,12 +376,6 @@ function DashboardTab() {
                           scope="col"
                           className="px-6 py-3 border-2 border-black font-bold text-lg"
                         >
-                          S.N
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 border-2 border-black font-bold text-lg"
-                        >
                           Order ID
                         </th>
                         <th
@@ -451,12 +406,6 @@ function DashboardTab() {
                           scope="col"
                           className="px-6 py-3 border-2 border-black font-bold text-lg"
                         >
-                          Payment
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 border-2 border-black font-bold text-lg"
-                        >
                           Status
                         </th>
                         <th
@@ -479,12 +428,6 @@ function DashboardTab() {
                             (sum, ci) => sum + parseInt(ci.price) * ci.quantity,
                             0
                           ) + 100;
-                        const currentStatus =
-                          statusMap[item.orderId] || "Pending";
-                        const buttonSelection = selectedButton[
-                          item.orderId
-                        ] || { done: false, failed: false };
-
                         return (
                           <tbody key={item.orderId}>
                             {/* Group items by orderId */}
@@ -496,12 +439,6 @@ function DashboardTab() {
                                 color: mode === "dark" ? "white" : "",
                               }}
                             >
-                              <td
-                                className="px-6 py-4 border-2 border-black font-bold text-lg"
-                                rowSpan={item.cartItems.length}
-                              >
-                                {index + 1}
-                              </td>
                               <td
                                 className="px-6 py-4 border-2 border-black font-bold text-lg"
                                 rowSpan={item.cartItems.length}
@@ -522,7 +459,7 @@ function DashboardTab() {
                                 ))}
                               </td>
                               <td className="px-6 py-4 border-2 border-black">
-                                ₹{totalPrice}
+                                Rs {totalPrice}
                               </td>
 
                               {/* Combine name, address, and phone in one column with labels */}
@@ -551,50 +488,16 @@ function DashboardTab() {
                                 className="px-6 py-4 border-2 border-black"
                                 rowSpan={item.cartItems.length}
                               >
-                                {item.transaction}
-                              </td>
-                              <td
-                                // className="px-6 py-4 border-2 border-black"
-                                className={`${
-                                  currentStatus === "Completed"
-                                    ? "px-6 py-4 text-green-600 font-bold  border-2 border-black"
-                                    : "px-6 py-4 text-red-600 font-bold  border-2 border-black"
-                                }`}
-                                rowSpan={item.cartItems.length}
-                              >
-                                {currentStatus}
+                                Pending
                               </td>
                               <td
                                 className="px-6 py-4 border-2 border-black"
                                 rowSpan={item.cartItems.length}
                               >
-                                <div className="flex">
-                                  <button
-                                    className={`mx-2 btn ${
-                                      buttonSelection.done
-                                        ? "btn-success"
-                                        : "btn-outline"
-                                    }`}
-                                    onClick={() =>
-                                      actionBtn("Done", item.orderId)
-                                    } // Set status to "Completed"
-                                  >
-                                    <FaCheck />
-                                  </button>
-                                  {/* Failed button with conditional styling */}
-                                  <button
-                                    className={`btn ${
-                                      buttonSelection.failed
-                                        ? "btn-error"
-                                        : "btn-outline"
-                                    }`}
-                                    onClick={() =>
-                                      actionBtn("Failed", item.orderId)
-                                    } // Set status to "Canceled"
-                                  >
-                                    <FaTimes />
-                                  </button>
-                                </div>
+                                <button className="btn btn-success">COD</button>
+                                <button className="btn btn-primary">
+                                  Online
+                                </button>
                               </td>
                             </tr>
                           </tbody>

@@ -1,93 +1,123 @@
-import React, { useContext } from "react";
-import myContext from "../../context/data/myContext";
-import Layout from "../../components/layout/Layout";
-import Loader from "../../components/loader/Loader";
+// import React, { useContext } from "react";
+// import myContext from "../../context/data/myContext";
+// import Layout from "../../components/layout/Layout";
+// import Loader from "../../components/loader/Loader";
 
 // function Order() {
-//   const user = JSON.parse(localStorage.getItem("user"));
-//   const userid = user.uid;
-//   // if (!userid) {
-//   //   return <div>User not loggeed in</div>;
-//   // }
+//   console.log("Rendering OrderTableWithDateAndTime component...");
+
+//   const user = JSON.parse(localStorage.getItem("user") || "{}");
+//   const userid = user?.uid;
 //   console.log("userid", userid);
+
+//   if (!userid) {
+//     console.error("User is not logged in.");
+//     return <div>User not logged in</div>;
+//   }
+
 //   const context = useContext(myContext);
+
+//   if (!context) {
+//     console.error("Context is undefined. Ensure Provider is set up correctly.");
+//     return <div>Context not available</div>;
+//   }
+
 //   const { mode, loading, order } = context;
-//   console.log("order", order, userid);
+
+//   if (loading) {
+//     return <Loader />;
+//   }
+
+//   if (!order || order.length === 0) {
+//     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
+//   }
+
+//   // Filter orders for the current user and sort by date (latest first)
+//   const userOrders = order
+//     .filter((obj) => obj.userId.uid === userid)
+//     .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+//   if (userOrders.length === 0) {
+//     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
+//   }
+
 //   return (
 //     <Layout>
-//       {loading && <Loader />}
-//       {order.length > 0 ? (
-//         <>
-//           <div className=" h-full pt-10">
-//             {order
-//               .filter((obj) => obj.userid == userid)
-//               .map((order) => {
-//                 // order.cartItems.map()
-//                 return (
-//                   <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-//                     {order.cartItems.map((item) => {
-//                       return (
-//                         <div className="rounded-lg md:w-2/3">
-//                           <div
-//                             className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-//                             style={{
-//                               backgroundColor: mode === "dark" ? "#282c34" : "",
-//                               color: mode === "dark" ? "white" : "",
-//                             }}
-//                           >
-//                             <img
-//                               src={item.imageUrl}
-//                               alt="product-image"
-//                               className="w-full rounded-lg sm:w-40"
-//                             />
-//                             <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-//                               <div className="mt-5 sm:mt-0">
-//                                 <h2
-//                                   className="text-lg font-bold text-gray-900"
-//                                   style={{
-//                                     color: mode === "dark" ? "white" : "",
-//                                   }}
-//                                 >
-//                                   {item.title}
-//                                 </h2>
-//                                 <p
-//                                   className="mt-1 text-xs text-gray-700"
-//                                   style={{
-//                                     color: mode === "dark" ? "white" : "",
-//                                   }}
-//                                 >
-//                                   {item.description}
-//                                 </p>
-//                                 <p
-//                                   className="mt-1 text-xs text-gray-700"
-//                                   style={{
-//                                     color: mode === "dark" ? "white" : "",
-//                                   }}
-//                                 >
-//                                   {item.price}
-//                                 </p>
-//                               </div>
-//                             </div>
-//                           </div>
-//                         </div>
-//                       );
-//                     })}
-//                   </div>
-//                 );
-//               })}
-//           </div>
-//         </>
-//       ) : (
-//         <h2 className=" text-center tex-2xl text-white">Not Order</h2>
-//       )}
+//       <div className="h-full pt-10">
+//         <table className="table-auto w-full border-collapse border border-black">
+//           <thead>
+//             <tr className="bg-gray-100">
+//               <th className="border border-black px-4 py-2">Order ID</th>
+//               <th className="border border-black px-4 py-2">Date & Time</th>
+//               <th className="border border-black px-4 py-2">Item</th>
+//               <th className="border border-black px-4 py-2">Price</th>
+//               <th className="border border-black px-4 py-2">Quantity</th>
+//               <th className="border border-black px-4 py-2">Total Price</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {userOrders.map((order) => (
+//               <React.Fragment key={order.id}>
+//                 {order.cartItems?.map((item, index) => (
+//                   <tr
+//                     key={item.id}
+//                     className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+//                   >
+//                     {index === 0 && (
+//                       <>
+//                         <td
+//                           className="border border-black px-4 py-2 text-center"
+//                           rowSpan={order.cartItems.length}
+//                         >
+//                           {order.orderId || "No Order ID"}
+//                         </td>
+//                         <td
+//                           className="border border-black px-4 py-2 text-center"
+//                           rowSpan={order.cartItems.length}
+//                         >
+//                           {new Date(order.date).toLocaleString() || "N/A"}
+//                         </td>
+//                       </>
+//                     )}
+//                     <td className="border border-black px-4 py-2">
+//                       <div className="flex items-center">
+//                         <img
+//                           src={item.imageUrl}
+//                           alt="Product"
+//                           className="w-12 h-12 rounded-lg mr-4"
+//                         />
+//                         <span>{item.title}</span>
+//                       </div>
+//                     </td>
+//                     <td className="border border-black px-4 py-2 text-center">
+//                       Rs {item.price}
+//                     </td>
+//                     <td className="border border-black px-4 py-2 text-center">
+//                       {item.quantity}
+//                     </td>
+//                     <td className="border border-black px-4 py-2 text-center">
+//                       Rs {item.price * item.quantity}
+//                     </td>
+//                   </tr>
+//                 ))}
+//               </React.Fragment>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
 //     </Layout>
 //   );
 // }
 
 // export default Order;
 
+import React, { useContext } from "react";
+import myContext from "../../context/data/myContext";
+import Layout from "../../components/layout/Layout";
+import Loader from "../../components/loader/Loader";
+
 function Order() {
-  console.log("Rendering Order component...");
+  console.log("Rendering OrderTableWithDateAndTime component...");
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const userid = user?.uid;
@@ -98,8 +128,6 @@ function Order() {
     return <div>User not logged in</div>;
   }
 
-  console.log("User ID:", userid);
-
   const context = useContext(myContext);
 
   if (!context) {
@@ -109,8 +137,6 @@ function Order() {
 
   const { mode, loading, order } = context;
 
-  console.log("Context data:", { mode, loading, order });
-
   if (loading) {
     return <Loader />;
   }
@@ -119,8 +145,11 @@ function Order() {
     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
   }
 
-  const userOrders = order.filter((obj) => obj.userId.uid === userid);
-  console.log("userOrders", userOrders);
+  // Filter orders for the current user and sort by date (latest first)
+  const userOrders = order
+    .filter((obj) => obj.userId.uid === userid)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
   if (userOrders.length === 0) {
     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
   }
@@ -128,63 +157,86 @@ function Order() {
   return (
     <Layout>
       <div className="h-full pt-10">
-        {userOrders.map((order) => (
-          <div
-            className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
-            key={order.id}
-          >
-            {order.orderId ? <h1>{order.orderId}</h1> : <div>No order id</div>}
-            {order.cartItems?.map((item) => (
-              <div className="rounded-lg md:w-2/3" key={item.id}>
-                <div
-                  className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start 0"
-                  style={{
-                    backgroundColor: mode === "dark" ? "#282c34" : "",
-                    color: mode === "dark" ? "white" : "",
-                  }}
-                >
-                  <img
-                    src={item.imageUrl}
-                    alt="product-image"
-                    className="w-full rounded-lg sm:w-40"
-                  />
-                  <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                    <div className="mt-5 sm:mt-0">
-                      <h2
-                        className="text-lg font-bold text-gray-900"
-                        style={{
-                          color: mode === "dark" ? "white" : "",
-                        }}
-                      >
-                        {item.title}
-                      </h2>
-                      <p
-                        className="mt-1 text-xs text-gray-700"
-                        style={{
-                          color: mode === "dark" ? "white" : "",
-                        }}
-                      >
-                        {item.description}
-                      </p>
-                      <p
-                        className="mt-1 text-xs text-gray-700"
-                        style={{
-                          color: mode === "dark" ? "white" : "",
-                        }}
-                      >
-                        {item.price}
-                      </p>
-                    </div>
-                    <div>
-                      <p>Quantity</p>
-                      <h2 className="flex justify-center">{item.quantity}</h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ))}
+        <table className="table-auto w-full border-collapse border border-black">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-black px-4 py-2">Order ID</th>
+              <th className="border border-black px-4 py-2">Date & Time</th>
+              <th className="border border-black px-4 py-2">Item</th>
+              <th className="border border-black px-4 py-2">Price</th>
+              <th className="border border-black px-4 py-2">Quantity</th>
+              <th className="border border-black px-4 py-2">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userOrders.map((order) => {
+              // Calculate total price for each order
+              const totalOrderPrice = order.cartItems?.reduce(
+                (sum, item) => sum + item.price * item.quantity,
+                0
+              );
+
+              return (
+                <React.Fragment key={order.id}>
+                  {order.cartItems?.map((item, index) => (
+                    <tr
+                      key={item.id}
+                      className={`${
+                        index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                      }`}
+                    >
+                      {index === 0 && (
+                        <>
+                          <td
+                            className="border border-black px-4 py-2 text-center"
+                            rowSpan={order.cartItems.length}
+                          >
+                            {order.orderId || "No Order ID"}
+                          </td>
+                          <td
+                            className="border border-black px-4 py-2 text-center"
+                            rowSpan={order.cartItems.length}
+                          >
+                            {order.addressInfo.date || "N/A"}
+                          </td>
+                        </>
+                      )}
+                      <td className="border border-black px-4 py-2">
+                        <div className="flex items-center">
+                          <img
+                            src={item.imageUrl}
+                            alt="Product"
+                            className="w-12 h-12 rounded-lg mr-4"
+                          />
+                          <span>{item.title}</span>
+                        </div>
+                      </td>
+                      <td className="border border-black px-4 py-2 text-center">
+                        Rs {item.price}
+                      </td>
+                      <td className="border border-black px-4 py-2 text-center">
+                        {item.quantity}
+                      </td>
+                      <td className="border border-black px-4 py-2 text-center">
+                        Rs {item.price * item.quantity}
+                      </td>
+                    </tr>
+                  ))}
+
+                  <td
+                    colSpan="5"
+                    className="border border-black px-4 py-2 text-right font-bold"
+                  >
+                    Total Price:
+                  </td>
+                  <td className="0 px-4 py-2 text-center font-bold">
+                    Rs {totalOrderPrice || 0}
+                  </td>
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </Layout>
   );
