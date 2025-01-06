@@ -10,41 +10,39 @@ import myContext from "../../context/data/myContext";
 
 function MenuCard({ title, description, price, image, link }) {
   return (
-    
     <div className="max-w-sm  w-64 h-64 bg-white rounded-full shadow-2xl overflow-hidden">
       <Link to={link || "/allproducts"}>
-         <img className="w-full h-full object-cover" src={image} alt={title} />
-         {title === "Tickets" }
-         
-      <div className="p-6">
-        <h2 className="text-xl font-semibold text-center text-gray-800">
-          {title}
-        </h2>
+        <img className="w-full h-full object-cover" src={image} alt={title} />
+        {title === "Tickets"}
+
+        <div className="p-6">
+          <h2 className="text-xl font-semibold text-center text-gray-800">
+            {title}
+          </h2>
         </div>
-        </Link>
-        {/* <p className="text-gray-600 mt-2">{description}</p> */}
-        {/* <div className="mt-4 flex justify-center items-center"> */}
-          {/* <span className="text-lg font-bold text-green-600">Rs.{price}</span> */}
-          {/* <Link to={link || "/allproducts"}> */}
-            {/* <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"> */}
-              {/* {title === "Tickets" ? "Book Now" : "Order Now"} */}
-            {/* </button> */}
-          {/* </Link> */}
-        {/* </div> */}
-      </div>
-    
+      </Link>
+      {/* <p className="text-gray-600 mt-2">{description}</p> */}
+      {/* <div className="mt-4 flex justify-center items-center"> */}
+      {/* <span className="text-lg font-bold text-green-600">Rs.{price}</span> */}
+      {/* <Link to={link || "/allproducts"}> */}
+      {/* <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"> */}
+      {/* {title === "Tickets" ? "Book Now" : "Order Now"} */}
+      {/* </button> */}
+      {/* </Link> */}
+      {/* </div> */}
+    </div>
   );
 }
 
 function App() {
   const { mode } = useContext(myContext);
   const menuItems = [
-    {
-      title: "Restaurant",
-      description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
-      price: "8.99",
-      image: restaurant,
-    },
+    // {
+    //   title: "Restaurant",
+    //   description: "A juicy burger with fresh lettuce, tomatoes, and cheese.",
+    //   price: "8.99",
+    //   image: restaurant,
+    // },
     {
       title: "Liquor",
       description: "Cheesy pizza with your favorite toppings and toppings.",
@@ -75,14 +73,14 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-gray-100 p-8 "
+      className="border-2 border-red-500 min-h-24 bg-gray-100 p-8 "
       style={{
         backgroundColor: mode === "dark" ? "#101c24" : "white",
         color: mode === "dark" ? "white" : "",
       }}
     >
-      <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <h1 className="text-3xl font-bold text-center mb-8">Our Services</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-20">
         {menuItems.map((item, index) => (
           <MenuCard
             key={index}

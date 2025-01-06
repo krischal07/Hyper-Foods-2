@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-import hero_food from "../../assets/hero_food.png";
-import heroimg from "../../assets/heroimg.png";
-import "./HeroSection.css";
-import imgcara from "../../assets/imgcara.png";
+
 import cara1 from "../../assets/devashish carasoule1.png";
 import cara2 from "../../assets/devashish carasoule 2.png";
+import cara3 from "../../assets/cara3.jpg";
 import { Button, Carousel } from "flowbite-react";
 import myContext from "../../context/data/myContext";
 const HeroSection = () => {
@@ -36,6 +34,12 @@ const HeroSection = () => {
         <img
           id="carasoule-img"
           src={cara2}
+          alt="..."
+          className="w-full h-[450px] object-cover"
+        />
+        <img
+          id="carasoule-img"
+          src={cara3}
           alt="..."
           className="w-full h-[450px] object-cover"
         />
