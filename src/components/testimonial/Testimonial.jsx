@@ -88,14 +88,14 @@ function Testimonial() {
                     <div className="flex items-center mt-8">
                       <img
                         className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                        src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
+                        src={Ayush}
                         alt=""
                       />
                       <div className="ml-4">
                         <p className="text-base font-bold font-pj">
-                          Ramesh Shrestha
+                          Ayush Poudel
                         </p>
-                        <p className="mt-0.5 text-sm font-pj">Businessman</p>
+                        <p className="mt-0.5 text-sm font-pj">Entrepreneur</p>
                       </div>
                     </div>
                   </div>
@@ -136,14 +136,14 @@ function Testimonial() {
                     <div className="flex items-center mt-8">
                       <img
                         className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                        src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
+                        src={shikhadidi}
                         alt=""
                       />
                       <div className="ml-4">
                         <p className="text-base font-bold font-pj">
-                          Kavita Sharma
+                         Shikha Karki
                         </p>
-                        <p className="mt-0.5 text-sm font-pj">Teacher</p>
+                        <p className="mt-0.5 text-sm font-pj">MD</p>
                       </div>
                     </div>
                   </div>
@@ -184,14 +184,14 @@ function Testimonial() {
                     <div className="flex items-center mt-8">
                       <img
                         className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                        src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png"
+                        src={devashish}
                         alt=""
                       />
                       <div className="ml-4">
                         <p className="text-base font-bold font-pj">
-                          Suman Khanal
+                          Devashish Poudel
                         </p>
-                        <p className="mt-0.5 text-sm font-pj">Freelancer</p>
+                        <p className="mt-0.5 text-sm font-pj">Consumer</p>
                       </div>
                     </div>
                   </div>
