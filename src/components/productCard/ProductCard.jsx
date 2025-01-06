@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import menuImage from "../../assets/menu.png";
 import restaurant from "../../assets/restaurant.jpg";
@@ -7,7 +7,6 @@ import ticket from "../../assets/ticket.png";
 import grocery from "../../assets/grocery.jpg";
 import foods from "../../assets/foods.png";
 import myContext from "../../context/data/myContext";
-
 
 function MenuCard({ title, description, price, image, link }) {
   return (
@@ -32,7 +31,7 @@ function MenuCard({ title, description, price, image, link }) {
 }
 
 function App() {
-  const { mode } = useContext(myContext); 
+  const { mode } = useContext(myContext);
   const menuItems = [
     {
       title: "Restaurant",
@@ -45,13 +44,14 @@ function App() {
       description: "Cheesy pizza with your favorite toppings and toppings.",
       price: "12.49",
       image: liquor,
+      link: "/liqourinfo",
     },
     {
       title: "Tickets",
       description: "Comming soon",
       // price: "10.99",
       image: ticket,
-      link : "/tickets",
+      link: "/tickets",
     },
     {
       title: "Grocery",
@@ -68,10 +68,13 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 "
-    style={{ 
-      backgroundColor: mode === "dark" ? "#101c24" : "white",
-      color: mode === "dark" ? "white" : "" }} >
+    <div
+      className="min-h-screen bg-gray-100 p-8 "
+      style={{
+        backgroundColor: mode === "dark" ? "#101c24" : "white",
+        color: mode === "dark" ? "white" : "",
+      }}
+    >
       <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {menuItems.map((item, index) => (
@@ -81,9 +84,8 @@ function App() {
             description={item.description}
             price={item.price}
             image={item.image}
-            mode = {mode}
-            link = {item.link}
-
+            mode={mode}
+            link={item.link}
           />
         ))}
       </div>
