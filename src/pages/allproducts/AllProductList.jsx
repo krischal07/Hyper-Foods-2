@@ -3,6 +3,7 @@ import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 function AllProducts() {
   const context = useContext(myContext);
   const { mode, product } = context;
@@ -32,6 +33,16 @@ function AllProducts() {
   const [filteredProducts, setFilteredProducts] = useState(product); // State for filtered products
 
   const [filter, setFilter] = useState("default");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const filterFromUrl = queryParams.get("filter");
+    if (filterFromUrl) {
+      setFilter(filterFromUrl);
+    }
+  }, [location]);
 
   useEffect(() => {
     setPrices(product.map((item) => item.price));
