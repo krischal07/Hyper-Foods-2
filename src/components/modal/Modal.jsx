@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-
+import nabil from "../../assets/nabilqr.jpeg";
+import { toast } from "react-toastify";
 export default function Modal({
   name,
   address,
@@ -12,6 +13,8 @@ export default function Modal({
   setTransaction,
 }) {
   let [isOpen, setIsOpen] = useState(false);
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false);
+  const [showQR, setshowQr] = useState(null);
 
   function closeModal() {
     setIsOpen(false);
@@ -117,33 +120,69 @@ export default function Modal({
                               />
                             </div>
 
-                            <div>
-                              <button
-                                onClick={() => setTransaction("bank")}
-                                className="btn btn-success"
-                                type="button"
-                              >
-                                Nabil
-                              </button>
-                              <button
-                                onClick={() => setTransaction("cod")}
-                                className="btn btn-primary"
-                                type="button"
-                              >
-                                COD
-                              </button>
-                            </div>
                           </form>
                           <button
-                            onClick={() => {
-                              buyNow();
-                              closeModal();
-                            }}
+                            onClick={() => { 
+                              if(name===""||phone===""|| address ==="" ){
+                                return toast.error("All fields requied")
+                              }
+                              else{
+                                
+                              }
+                              setShowPaymentOptions(true);
+                                            }}
                             type="button"
                             className="focus:outline-none w-full text-white bg-violet-600 bg-green-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
                           >
                             Order Now
                           </button>
+
+                          {showPaymentOptions &&(
+                            <div className="flex justify-evenly">
+                             
+                              <button
+                                onClick={() => {
+                                  setTransaction("bank");
+                                  // buyNow();
+                                  setshowQr(true);
+                                  // closeModal();
+                                }}
+                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                type="button"
+                              >
+                                Bank
+                              </button>
+                              
+                              <button 
+                                onClick={() => {
+                                  setTransaction("cod");
+                                  buyNow();
+                                  closeModal();
+                                 
+                                                                 }}
+                                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                type="button"
+                              >
+                                COD
+                              </button>
+                            </div>
+                           ) } 
+
+                           {showQR &&(
+                            <div className="mt-4">
+                              <img src={nabil} alt="bankqr" srcset="" />
+                              <button
+                                onClick={() => {
+                                  buyNow();
+                                  closeModal();
+                                  
+                                     }}
+                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-lg py-2 mt-4 w-full text-center"
+                              >
+                                Done
+                                  </button>
+                             </div>
+                           )}
                         </div>
                       </div>
                     </div>
@@ -155,5 +194,6 @@ export default function Modal({
         </Dialog>
       </Transition>
     </>
+    
   );
 }
