@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div
-      className="border-2 border-red-500 min-h-24 bg-gray-100 p-8 "
+      className="min-h-24 bg-gray-100 p-8 "
       style={{
         backgroundColor: mode === "dark" ? "#101c24" : "white",
         color: mode === "dark" ? "white" : "",
