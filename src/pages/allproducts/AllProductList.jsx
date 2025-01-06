@@ -48,16 +48,16 @@ function AllProducts() {
     setActiveOptions((prevOptions) => {
       const updatedOptions = [...prevOptions];
       updatedOptions[index] = option;
-      console.log("updatedOptions", updatedOptions);
-      console.log("option", option);
+      // console.log("updatedOptions", updatedOptions);
+      // console.log("option", option);
       return updatedOptions;
     });
 
     setPrices((prevPrice) => {
       const updatedPrices = [...prevPrice];
       updatedPrices[index] = price;
-      console.log("updatedPrice", updatedPrices);
-      console.log("price", price);
+      // console.log("updatedPrice", updatedPrices);
+      // console.log("price", price);
       return updatedPrices;
     });
   };
