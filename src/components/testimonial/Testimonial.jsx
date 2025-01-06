@@ -25,7 +25,9 @@ function Testimonial() {
                   mode === "dark" ? "text-gray-300" : "text-gray-600"
                 } font-pj`}
               >
-                2,157 people have said how good Rareblocks
+                300+ people have said how good{" "}
+                <span className="font-bold text-[#fe3b48]">Hyper</span>{" "}
+                <span className="font-bold text-[#0c436f]">Foods</span> is
               </p>
               <h2
                 className={`mt-4 text-3xl font-bold ${
