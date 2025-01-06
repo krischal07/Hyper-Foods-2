@@ -223,7 +223,7 @@ function AllProducts() {
                   <div className="p-5 border-t-2">
                     <div className="">
                       {item.extra_option === "Yes" ? (
-                        <div className="flex justify-around">
+                        <div className="flex justify-around mb-4">
                           <button
                             className={`${
                               activeOptions[index] === "Room Temperature"
@@ -243,8 +243,8 @@ function AllProducts() {
                           <button
                             className={`${
                               activeOptions[index] === "Chilled"
-                                ? "btn btn-primary "
-                                : "btn btn-outline btn-primary"
+                                ? "btn btn-info "
+                                : "btn btn-outline btn-info"
                             } px-3 py-1 rounded`}
                             onClick={() =>
                               handleOptionClick(
@@ -260,6 +260,9 @@ function AllProducts() {
                       ) : (
                         ""
                       )}
+                    </div>
+                    <div className="border-2 flex justify-center mb-4">
+                      {item.extra_name?"":<button className="btn btn-secondary px-3 py-1 rounded w-full ">Special</button>}
                     </div>
                     <h2
                       className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
@@ -301,10 +304,10 @@ function AllProducts() {
                     >
                       Rs. {prices[index]}
                     </p>
-                    <div className="flex justify-center">
+                    <div className="flex justify-end">
                       <button
                         type="button"
-                        className="focus:outline-none text-white bg-blue-800 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full py-2"
+                        className="focus:outline-none text-white bg-blue-800 hover:bg-emerald-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full py-2 "
                         onClick={() => addCart(item)}
                       >
                         Add To Cart
