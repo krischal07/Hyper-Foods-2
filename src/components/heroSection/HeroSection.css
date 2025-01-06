@@ -39,3 +39,8 @@
   font-weight: bold;
   color: #013e72;
 }
+
+.carasoule-img {
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}

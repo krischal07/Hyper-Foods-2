@@ -3,6 +3,8 @@ import hero_food from "../../assets/hero_food.png";
 import heroimg from "../../assets/heroimg.png";
 import "./HeroSection.css";
 import imgcara from "../../assets/imgcara.png";
+import cara1 from "../../assets/devashish carasoule1.png";
+import cara2 from "../../assets/devashish carasoule 2.png";
 import { Button, Carousel } from "flowbite-react";
 import myContext from "../../context/data/myContext";
 const HeroSection = () => {
@@ -21,8 +23,22 @@ const HeroSection = () => {
 
     //     </div>
 
-    <div className="h-56 sm:h-64 xl:h-[450px] 2xl:h-96 p-4">
+    <div className="h-56 sm:h-64 xl:h-[450px] 2xl:h-96 p-4 w-full">
       <Carousel slide={false}>
+        <div className="aspect-w-16 aspect-h-9">
+          <img
+            id="carasoule-img"
+            src={cara1}
+            alt="..."
+            className="w-full h-[450px] object-cover"
+          />
+        </div>
+        <img
+          id="carasoule-img"
+          src={cara2}
+          alt="..."
+          className="w-full h-[450px] object-cover"
+        />
         {carasoule.map((item, index) => {
           return (
             <div>
