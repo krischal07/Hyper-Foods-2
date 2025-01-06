@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Order from "./pages/order/Order";
@@ -22,12 +23,30 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UploadCarasoule from "./pages/admin/page/Carasoule/UploadCarasoule";
 
+// Wrap your Home route with PageWithTawk
+const PageWithTawk = ({ children }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://embed.tawk.to/676a867649e2fd8dfefcf43c/1ifs1qga6'; // Your Tawk.to script URL
+      script.charset = 'UTF-8';
+      script.setAttribute('crossorigin', '*');
+      document.head.appendChild(script);
+    }
+  }, [location.pathname]);
+
+  return children;
+};
+
 const App = () => {
   return (
     <MyState>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<PageWithTawk><Home /></PageWithTawk>} />
           <Route
             path="/order"
             element={
@@ -93,7 +112,7 @@ export const ProtectedRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    return <Navigate to=<Login /> />;
+    return <Navigate to="/login" />;
   }
 };
 

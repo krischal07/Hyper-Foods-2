@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import myContext from "../../context/data/myContext";
 import HeroSection from "../../components/heroSection/HeroSection";
@@ -7,6 +8,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import Testimonial from "../../components/testimonial/Testimonial";
 
 const Home = () => {
+  
   return (
     <Layout>
       <HeroSection />

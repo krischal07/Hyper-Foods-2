@@ -11,23 +11,29 @@ import myContext from "../../context/data/myContext";
 
 function MenuCard({ title, description, price, image, link }) {
   return (
-    <div className="max-w-sm bg-white rounded-full shadow-lg overflow-hidden">
-      <img className="w-full h-60 object-cover" src={image} alt={title} />
+    
+    <div className="max-w-sm  w-64 h-64 bg-white rounded-full shadow-2xl overflow-hidden">
+      <Link to={link || "/allproducts"}>
+         <img className="w-full h-full object-cover" src={image} alt={title} />
+         {title === "Tickets" }
+         
       <div className="p-6">
         <h2 className="text-xl font-semibold text-center text-gray-800">
           {title}
         </h2>
-        {/* <p className="text-gray-600 mt-2">{description}</p> */}
-        <div className="mt-4 flex justify-center items-center">
-          {/* <span className="text-lg font-bold text-green-600">Rs.{price}</span> */}
-          <Link to={link || "/allproducts"}>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-              {title === "Tickets" ? "Book Now" : "Order Now"}
-            </button>
-          </Link>
         </div>
+        </Link>
+        {/* <p className="text-gray-600 mt-2">{description}</p> */}
+        {/* <div className="mt-4 flex justify-center items-center"> */}
+          {/* <span className="text-lg font-bold text-green-600">Rs.{price}</span> */}
+          {/* <Link to={link || "/allproducts"}> */}
+            {/* <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"> */}
+              {/* {title === "Tickets" ? "Book Now" : "Order Now"} */}
+            {/* </button> */}
+          {/* </Link> */}
+        {/* </div> */}
       </div>
-    </div>
+    
   );
 }
 
@@ -73,7 +79,7 @@ function App() {
       backgroundColor: mode === "dark" ? "#101c24" : "white",
       color: mode === "dark" ? "white" : "" }} >
       <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {menuItems.map((item, index) => (
           <MenuCard
             key={index}
