@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
         <div className="contact-item">
           <h5>
-            <i className="fas fa-phone"></i> +977 980 9374 980
+            <i className="fas fa-phone"></i> +977 970 482 9529
           </h5>
         </div>
         <div className="contact-item">
