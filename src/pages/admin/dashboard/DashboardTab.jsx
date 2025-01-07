@@ -402,7 +402,7 @@ function DashboardTab() {
                         >
                           Date
                         </th>
-                        <th
+                        {/* <th
                           scope="col"
                           className="px-6 py-3 border-2 border-black font-bold text-lg"
                         >
@@ -413,7 +413,7 @@ function DashboardTab() {
                           className="px-6 py-3 border-2 border-black font-bold text-lg"
                         >
                           Action
-                        </th>
+                        </th> */}
                       </tr>
                     </thead>
                     {order
@@ -484,7 +484,7 @@ function DashboardTab() {
                               >
                                 {item.addressInfo.date}
                               </td>
-                              <td
+                              {/* <td
                                 className="px-6 py-4 border-2 border-black"
                                 rowSpan={item.cartItems.length}
                               >
@@ -498,7 +498,7 @@ function DashboardTab() {
                                 <button className="btn btn-primary">
                                   Online
                                 </button>
-                              </td>
+                              </td> */}
                             </tr>
                           </tbody>
                         );

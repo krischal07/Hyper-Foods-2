@@ -3,17 +3,27 @@ import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const OrderNow = () => {
   const context = useContext(myContext);
   const { mode, product } = context;
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const userid = user?.uid;
+  console.log("userid", userid);
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
   const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("Added to cart successfully");
+    if (!userid) {
+      navigate("/login");
+    } else {
+      dispatch(addToCart(product));
+      toast.success("Added to cart successfully");
+    }
   };
 
   useEffect(() => {
@@ -139,8 +149,12 @@ const OrderNow = () => {
                         )}
                       </div>
                     )}
-                        <div className="border-2 flex justify-center mb-4">
-                      {item.extra_name?"":<button className="btn btn-wide px-3 py-1 rounded w-full "></button>}
+                    <div className="border-2 flex justify-center mb-4">
+                      {item.extra_name ? (
+                        ""
+                      ) : (
+                        <button className="btn btn-wide px-3 py-1 rounded w-full "></button>
+                      )}
                     </div>
                     <h2
                       className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
