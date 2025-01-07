@@ -17,7 +17,7 @@ export default function Modal({
   const [showPaymentOptions, setShowPaymentOptions] = useState(false);
   const [showQR, setshowQr] = useState(null);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   function closeModal() {
     setIsOpen(false);
@@ -122,6 +122,7 @@ export default function Modal({
                                 required
                               />
                             </div>
+                            
                           </form>
                           <button
                             onClick={() => {
@@ -130,8 +131,15 @@ export default function Modal({
                                 phone === "" ||
                                 address === ""
                               ) {
-                                return toast.error("All fields requied");
-                              } else {
+                                return toast.error("All fields are requied");
+                              } 
+                              
+                              const phoneRegex = /^[0-9]{10}$/; // Allows only 10-digit numbers
+                               if (!phoneRegex.test(phone)) {
+                                 return toast.error("Please enter a valid 10-digit mobile number");
+                                  }
+
+                              else {
                               }
                               setShowPaymentOptions(true);
                             }}
