@@ -4,7 +4,7 @@ import cara0 from "../../assets/imgcara.png";
 import cara5 from "../../assets/cara5.png";
 import cara1 from "../../assets/devashish carasoule1.png";
 import cara2 from "../../assets/devashish carasoule 2.png";
-import cara3 from "../../assets/cara3.jpg";
+import cara3 from "../../assets/cara3.png";
 import { Button, Carousel } from "flowbite-react";
 import myContext from "../../context/data/myContext";
 const HeroSection = () => {
