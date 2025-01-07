@@ -4,7 +4,6 @@ import Layout from "../../components/layout/Layout";
 import Loader from "../../components/loader/Loader";
 
 function Order() {
-  // window.location.reload();
   console.log("Rendering OrderTableWithDateAndTime component...");
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -33,10 +32,22 @@ function Order() {
     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
   }
 
-  // Filter orders for the current user and sort by date (latest first)
+  // Filter orders for the current user and sort by the order time (latest first)
   const userOrders = order
     .filter((obj) => obj.userId.uid === userid)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => {
+      // const dateA = new Date(a.date); // assuming `a.date` is in ISO string or valid Date format
+      // const dateB = new Date(b.date); // assuming `b.date` is in ISO string or valid Date format
+
+      // // Compare by order time (latest order first)
+      // return dateB - dateA; // Sort by the most recent date/time first
+
+      const dateA = new Date(a.addressInfo.date);
+      const dateB = new Date(b.addressInfo.date);
+      return isNaN(dateA) || isNaN(dateB) ? 0 : dateB - dateA;
+    });
+
+  console.log("User order ", userOrders);
 
   if (userOrders.length === 0) {
     return <h2 className="text-center tex-2xl text-black">No Orders</h2>;
@@ -64,6 +75,8 @@ function Order() {
                 0
               );
 
+              console.log("cartitems", order.cartItems);
+
               return (
                 <React.Fragment key={order.id}>
                   {order.cartItems?.map((item, index) => (
@@ -85,7 +98,9 @@ function Order() {
                             className="border border-black px-4 py-2 text-center"
                             rowSpan={order.cartItems.length}
                           >
-                            {order.addressInfo.date || "N/A"}
+                            {/* {new Date(order.date).toLocaleString()}{" "} */}
+                            {/* Display the formatted date */}
+                            {order.addressInfo.date}
                           </td>
                         </>
                       )}

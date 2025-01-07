@@ -1,8 +1,8 @@
 // import { useContext, useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import myContext from "../../context/data/myContext";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase/FirebaseConfig";
+// import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+// import { auth, googleProvider } from "../../firebase/FirebaseConfig";
 // import { toast } from "react-toastify";
 // import Loader from "../../components/loader/Loader";
 // import Hyperlogo from "../../assets/hyperlogo.png";
@@ -13,6 +13,7 @@
 //   const [password, setPassword] = useState("");
 //   const navigate = useNavigate();
 
+//   // Email/Password Login
 //   const login = async () => {
 //     if (!email || !password) {
 //       toast.error("Please fill in all fields");
@@ -34,6 +35,26 @@
 //     }
 //   };
 
+//   // Google Login
+//   const googleLogin = async () => {
+//     setLoading(true);
+//     try {
+//       const result = await signInWithPopup(auth, googleProvider);
+//       const user = result.user;
+
+//       toast.success("Google Login Successful");
+
+//       // Save user data in localStorage (or handle session management)
+//       localStorage.setItem("user", JSON.stringify(user));
+//       navigate("/");
+//     } catch (error) {
+//       console.error(error);
+//       toast.error("Google Login Failed!");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
 //   return (
 //     <div className="flex justify-center items-center h-screen bg-white">
 //       {loading && <Loader />}
@@ -50,27 +71,27 @@
 //         <h1 className="text-center text-black text-xl mb-4 font-bold">Login</h1>
 //         {/* Email Input */}
 //         <div>
-//         <input
-//           type="email"
-//           name="email"
-//           aria-label="Email"
-//           className="bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-black outline-none"
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//         />
+//           <input
+//             type="email"
+//             name="email"
+//             aria-label="Email"
+//             className="bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-black outline-none"
+//             placeholder="Email"
+//             value={email}
+//             onChange={(e) => setEmail(e.target.value)}
+//           />
 //         </div>
 //         {/* Password Input */}
 //         <div>
-//                 <input
-//           type="password"
-//           name="password"
-//           aria-label="Password"
-//           className="bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-black outline-none"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         />
+//           <input
+//             type="password"
+//             name="password"
+//             aria-label="Password"
+//             className="bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-blue-950 placeholder:text-black outline-none"
+//             placeholder="Password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
 //         </div>
 //         {/* Login Button */}
 //         <button
@@ -79,6 +100,14 @@
 //           disabled={loading}
 //         >
 //           {loading ? "Logging in..." : "Login"}
+//         </button>
+//         {/* Google Login Button */}
+//         <button
+//           className="bg-red-600 w-full text-white font-bold px-2 py-2 rounded-lg mt-3"
+//           onClick={googleLogin}
+//           disabled={loading}
+//         >
+//           {loading ? "Logging in..." : "Login with Google"}
 //         </button>
 //         {/* Signup Link */}
 //         <p className="text-black mt-3">
@@ -94,14 +123,11 @@
 
 // export default Login;
 
-
-//login with google + login 
-
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import myContext from "../../context/data/myContext";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../firebase/FirebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 import Loader from "../../components/loader/Loader";
 import Hyperlogo from "../../assets/hyperlogo.png";
@@ -129,26 +155,6 @@ function Login() {
     } catch (error) {
       console.error(error);
       toast.error("Email or Password incorrect!");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Google Login
-  const googleLogin = async () => {
-    setLoading(true);
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-
-      toast.success("Google Login Successful");
-
-      // Save user data in localStorage (or handle session management)
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-      toast.error("Google Login Failed!");
     } finally {
       setLoading(false);
     }
@@ -200,14 +206,6 @@ function Login() {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
-        {/* Google Login Button */}
-        <button
-          className="bg-red-600 w-full text-white font-bold px-2 py-2 rounded-lg mt-3"
-          onClick={googleLogin}
-          disabled={loading}
-        >
-          {loading ? "Logging in..." : "Login with Google"}
-        </button>
         {/* Signup Link */}
         <p className="text-black mt-3">
           Don't have an account?{" "}
@@ -221,4 +219,3 @@ function Login() {
 }
 
 export default Login;
-
