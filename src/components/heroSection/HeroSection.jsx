@@ -28,6 +28,12 @@ const HeroSection = () => {
           alt="..."
           className="w-full h-[450px] object-cover"
         />
+        <img
+          id="carasoule-img"
+          src={cara3}
+          alt="..."
+          className="w-full h-[450px] object-cover"
+        />
 
         {carasoule.map((item, index) => {
           return (
