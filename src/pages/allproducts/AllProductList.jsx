@@ -75,6 +75,8 @@ function AllProducts() {
       filtered = product; // Default shows all products
     }
     setFilteredProducts(filtered);
+    setPrices(filtered.map((item) => item.price));
+    setActiveOptions(filtered.map(() => "Room Temperature"));
   }, [filter, product]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -91,8 +93,12 @@ function AllProducts() {
           item.category &&
           item.category.toLowerCase().includes(searchQuery.toLowerCase());
 
+        const titleMatch =
+          item.title &&
+          item.title.toLowerCase().includes(searchQuery.toLowerCase());
+
         // If either sub_category or category matches the search query, include the item
-        return subCategoryMatch || categoryMatch;
+        return subCategoryMatch || categoryMatch || titleMatch;
       });
 
       setFilteredProducts(filteredBySearch);
