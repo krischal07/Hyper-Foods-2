@@ -262,7 +262,7 @@ function AllProducts() {
                       )}
                     </div>
                     <div className="border-2 flex justify-center mb-4">
-                      {item.extra_name?"":<button className="btn btn-secondary px-3 py-1 rounded w-full ">Special</button>}
+                      {item.extra_name?"":<button className="btn btn-wide px-3 py-1 rounded w-full "></button>}
                     </div>
                     <h2
                       className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1"
