@@ -33,12 +33,7 @@ function AllProducts() {
   }, [cartItems]);
 
   const [prices, setPrices] = useState([]);
-  // console.log("products:", product[4].price);
-  // console.log("price in use state:", prices);
 
-  // const [prices, setPrices] = useState("Hello");
-
-  // console.log(p);
   const [activeOptions, setActiveOptions] = useState([]);
   console.log("activeOptions: ", activeOptions);
 
@@ -48,19 +43,7 @@ function AllProducts() {
 
   const location = useLocation();
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const filterFromUrl = queryParams.get("filter");
-    if (filterFromUrl) {
-      setFilter(filterFromUrl);
-    }
-  }, [location]);
-
-  useEffect(() => {
-    setPrices(product.map((item) => item.price));
-    setActiveOptions(product.map(() => "Room Temperature"));
-    console.log("prices are loaded");
-  }, [product]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     // Filter products based on the selected filter
@@ -74,15 +57,8 @@ function AllProducts() {
     } else {
       filtered = product; // Default shows all products
     }
-    setFilteredProducts(filtered);
-    setPrices(filtered.map((item) => item.price));
-    setActiveOptions(filtered.map(() => "Room Temperature"));
-  }, [filter, product]);
-
-  const [searchQuery, setSearchQuery] = useState("");
-  useEffect(() => {
     if (searchQuery) {
-      const filteredBySearch = product.filter((item) => {
+      filtered = filtered.filter((item) => {
         // Check if sub_category exists and matches search query
         const subCategoryMatch =
           item.sub_category &&
@@ -100,37 +76,47 @@ function AllProducts() {
         // If either sub_category or category matches the search query, include the item
         return subCategoryMatch || categoryMatch || titleMatch;
       });
-
-      setFilteredProducts(filteredBySearch);
-    } else {
-      setFilteredProducts(product); // Show all products if search query is empty
     }
-  }, [searchQuery, product]);
+    setFilteredProducts(filtered);
+    // setPrices(filtered.map((item) => item.price));
+    // setActiveOptions(filtered.map(() => "Room Temperature"));
+  }, [filter, searchQuery, product]);
 
-  // const handleChillBtn = (index, extraPrice) => {
-  //   setPrices((prevPrice) => {
-  //     const updatedPrices = [...prevPrice];
-  //     updatedPrices[index] = extraPrice;
-  //     console.log("updatedPrice", updatedPrices);
-  //     console.log("extraPrice", extraPrice);
-  //     return updatedPrices;
-  //   });
-  // };
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const filterFromUrl = queryParams.get("filter");
+    if (filterFromUrl) {
+      setFilter(filterFromUrl);
+    }
+  }, [location]);
+
+  // useEffect(() => {
+  //   setPrices(product.map((item) => item.price));
+  //   setActiveOptions(product.map(() => "Room Temperature"));
+  //   console.log("prices are loaded");
+  // }, [product]);
+
+  useEffect(() => {
+    const updatedPrices = filteredProducts.map((item, index) => {
+      const activeOption = activeOptions[index] || "Room Temperature";
+      return activeOption === "Chilled" && item.extra_price
+        ? item.extra_price
+        : item.price;
+    });
+    setPrices(updatedPrices);
+  }, [filteredProducts, activeOptions]);
 
   const handleOptionClick = (index, option, price) => {
     setActiveOptions((prevOptions) => {
       const updatedOptions = [...prevOptions];
       updatedOptions[index] = option;
-      // console.log("updatedOptions", updatedOptions);
-      // console.log("option", option);
       return updatedOptions;
     });
 
     setPrices((prevPrice) => {
       const updatedPrices = [...prevPrice];
       updatedPrices[index] = price;
-      // console.log("updatedPrice", updatedPrices);
-      // console.log("price", price);
+
       return updatedPrices;
     });
   };
