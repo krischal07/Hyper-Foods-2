@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import cara0 from "../../assets/imgcara.png";
 import cara5 from "../../assets/cara5.png";
+import cara6 from "../../assets/cara design.png";
 import cara1 from "../../assets/devashish carasoule1.png";
 import cara2 from "../../assets/devashish carasoule 2.png";
 import cara3 from "../../assets/cara3.png";
@@ -31,6 +32,12 @@ const HeroSection = () => {
         <img
           id="carasoule-img"
           src={cara3}
+          alt="..."
+          className="w-full h-[450px] object-cover"
+        />
+        <img
+          id="carasoule-img"
+          src={cara6}
           alt="..."
           className="w-full h-[450px] object-cover"
         />
