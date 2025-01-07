@@ -11,9 +11,9 @@ import myContext from "../../context/data/myContext";
 function MenuCard({ title, description, price, image, link, filter }) {
   return (
     <div className="max-w-sm  w-64 h-64 bg-white rounded-full shadow-2xl overflow-hidden">
-      <Link to={`/allproducts?filter=${filter}`}>
+      <Link to={title === "Tickets"? "/tickets" : `/allproducts?filter=${filter}`}>
         <img className="w-full h-full object-cover" src={image} alt={title} />
-        {title === "Tickets"}
+        {/* {title === "Tickets"} */}
 
         <div className="p-6">
           <h2 className="text-xl font-semibold text-center text-gray-800">
@@ -73,7 +73,13 @@ function App() {
         color: mode === "dark" ? "white" : "",
       }}
     >
-      <h1 className="text-3xl font-bold text-center mb-8">Our Services</h1>
+      {/* <h1 className="sm:text-3xl text-2xl text-center font-medium title-font mb-2 text-gray-900">Our Services</h1>
+      <div className="h-1 w-20 bg-[#013e72] rounded "></div> */}
+      <div className="text-center">
+  <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Our Services</h1>
+  <div className="h-1 w-20 bg-[#013e72] rounded mx-auto"></div>
+</div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 justify-items-center items-center">
         {menuItems.map((item, index) => (
           <MenuCard
