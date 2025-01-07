@@ -122,27 +122,27 @@ export default function Modal({
                                 required
                               />
                             </div>
-
                           </form>
                           <button
-                            onClick={() => { 
-                              if(name===""||phone===""|| address ==="" ){
-                                return toast.error("All fields requied")
-                              }
-                              else{
-                                
+                            onClick={() => {
+                              if (
+                                name === "" ||
+                                phone === "" ||
+                                address === ""
+                              ) {
+                                return toast.error("All fields requied");
+                              } else {
                               }
                               setShowPaymentOptions(true);
-                                            }}
+                            }}
                             type="button"
                             className="focus:outline-none w-full text-white bg-violet-600 bg-green-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
                           >
                             Order Now
                           </button>
 
-                          {showPaymentOptions &&(
+                          {showPaymentOptions && (
                             <div className="flex justify-evenly">
-                             
                               <button
                                 onClick={() => {
                                   setTransaction("bank");
@@ -155,24 +155,27 @@ export default function Modal({
                               >
                                 Bank
                               </button>
-                              
-                              <button 
+
+                              <button
                                 onClick={() => {
                                   setTransaction("cod");
                                   buyNow();
                                   closeModal();
-                                  navigate("/order");
-                                 
-                                                                 }}
+                                  setTimeout(() => {
+                                    window.location.href = "/order";
+                                    // localStorage.clear("cart");
+                                  }, 6000);
+                                  localStorage.removeItem("cart");
+                                }}
                                 class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                                 type="button"
                               >
                                 COD
                               </button>
                             </div>
-                           ) } 
+                          )}
 
-                           {showQR &&(
+                          {showQR && (
                             <div className="mt-4">
                               <img src={nabil} alt="bankqr" srcset="" />
                               <button
@@ -180,15 +183,13 @@ export default function Modal({
                                   buyNow();
                                   closeModal();
                                   navigate("/order");
-                                  
-                                     }}
+                                }}
                                 class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-lg py-2 mt-4 w-full text-center"
                               >
                                 Done
-                                
-                                  </button>
-                             </div>
-                           )}
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -200,6 +201,5 @@ export default function Modal({
         </Dialog>
       </Transition>
     </>
-    
   );
 }
