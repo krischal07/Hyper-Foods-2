@@ -270,7 +270,7 @@ function AllProducts() {
                       {item.extra_name ? (
                         ""
                       ) : (
-                        <button className="btn btn-wide px-3 py-1 rounded w-full "></button>
+                        <button className="btn  px-3 py-1 rounded w-full "></button>
                       )}
                     </div>
                     <h2
