@@ -4,7 +4,7 @@ import myContext from '../../context/data/myContext'
 import { toast } from 'react-toastify'
 import { auth, fireDB } from "../../firebase/FirebaseConfig"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { addDoc, collection, Timestamp, query, where, getDocs } from 'firebase/firestore'
 import Loader from '../../components/loader/Loader'
 import signuplogo from "../../assets/hyperlogo.png"
 
@@ -14,6 +14,7 @@ function Signup() {
    const [name, setName] = useState("")
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
+   const [username, setuserName] = useState("")
    const [phoneNumber, setPhoneNumber] = useState("")
 
 
@@ -22,8 +23,8 @@ function Signup() {
     
    const signup = async () => {
       setLoading(true)
-      console.log(name, email, password,phoneNumber)
-      if (name === "" || email === "" || password === ""|| phoneNumber === "") {
+      console.log(name, email, password,username,phoneNumber)
+      if (name === "" || email === "" || password === ""|| username === ""|| phoneNumber === "") {
          setLoading(false)
          return toast.error("All fields are required!!")
       }
@@ -34,27 +35,42 @@ function Signup() {
       }
       try {
          const users = await createUserWithEmailAndPassword(auth, email, password)
+
          const user = {
             name: name,
             uid: users.user.uid,
             email: users.user.email,
+            username: username,
             phoneNumber: phoneNumber,
             time: Timestamp.now()
          }
          const userRef = collection(fireDB, "users")
+         // const usernameQuery = query(userRef, where ("username" , "==" ,username));
+         // const usernameSnapshot = await getDocs(usernameQuery);
+
+         // if(!usernameSnapshot.empty){
+         //    setLoading(false);
+         //    return toast.error("username is already taken");
+         // }
+         
+         
+
          await addDoc(userRef, user)
          toast.success("SignUp Successful")
          setName("")
          setEmail("")
          setPassword("")
+         setuserName("")
          setPhoneNumber("")
          setLoading(false)
-      } catch (error) {
+      } 
+      catch (error) {
          console.log(error)
          toast.error(error.message)
          setLoading(false)
       }
    }
+
 
    return (
       <div className='flex justify-center items-center h-screen bg-white'>
@@ -99,6 +115,15 @@ function Signup() {
                   placeholder='Password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+               />
+            </div>
+            <div>
+               <input type="text"
+                  name='username'
+                  className='bg-gray-400 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-black outline-none'
+                  placeholder='username'
+                  value={username}
+                  onChange={(e) => setuserName(e.target.value)}
                />
             </div>
             <div>
