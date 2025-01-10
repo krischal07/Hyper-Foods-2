@@ -4,7 +4,7 @@ import myContext from '../../context/data/myContext'
 import { toast } from 'react-toastify'
 import { auth, fireDB } from "../../firebase/FirebaseConfig"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { addDoc, collection, Timestamp, query, where, getDocs } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import Loader from '../../components/loader/Loader'
 import signuplogo from "../../assets/hyperlogo.png"
 
