@@ -44,16 +44,16 @@ function Signup() {
             phoneNumber: phoneNumber,
             time: Timestamp.now()
          }
-         const userRef = collection(fireDB, "users")
          // const usernameQuery = query(userRef, where ("username" , "==" ,username));
          // const usernameSnapshot = await getDocs(usernameQuery);
-
+         
          // if(!usernameSnapshot.empty){
-         //    setLoading(false);
-         //    return toast.error("username is already taken");
-         // }
-         
-         
+            //    setLoading(false);
+            //    return toast.error("username is already taken");
+            // }
+            
+            
+            const userRef = collection(fireDB, "users")
 
          await addDoc(userRef, user)
          toast.success("SignUp Successful")
