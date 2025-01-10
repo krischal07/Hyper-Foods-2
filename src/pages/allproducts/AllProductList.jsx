@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 
+// import { addToCart } from "../../redux/CartSlice";
 import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -271,7 +272,7 @@ function AllProducts() {
                       {item.extra_name ? (
                         ""
                       ) : (
-                        <button className="btn btn-wide px-3 py-1 rounded w-full "></button>
+                        <button className="btn  px-3 py-1 rounded w-full "></button>
                       )}
                     </div>
                     <h2

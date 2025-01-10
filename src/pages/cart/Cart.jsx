@@ -3,11 +3,17 @@ import myContext from "../../context/data/myContext";
 import Layout from "../../components/layout/Layout";
 import Modal from "../../components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
+// import {
+//   decrementQuantity,
+//   deleteFromCart,
+//   incrementQuantity,
+// } from "../../redux/cartSlice";
+
 import {
   decrementQuantity,
   deleteFromCart,
   incrementQuantity,
-} from "../../redux/cartSlice";
+} from "../../redux/CartSlice";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
