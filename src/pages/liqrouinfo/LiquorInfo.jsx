@@ -1,37 +1,8 @@
-// import React, { useContext } from "react";
-// import Layout from "../../components/layout/Layout";
-// import myContext from "../../context/data/myContext";
-
-// const LiquorInfo = () => {
-//   const context = useContext(myContext);
-//   const { liquorItems } = context;
-//   console.log("liqor", liquorItems);
-//   return (
-//     <div>
-//       <Layout>
-//         <h1>Liquor Information</h1>
-//         <p>Hello</p>
-//         <div>
-//           {liquorItems.map((item) => {
-//             return (
-//               <div>
-//                 <p>{item.title}</p>
-//                 <p>{item.price}</p>
-//               </div>
-//             );
-//           })}
-//         </div>
-//       </Layout>
-//     </div>
-//   );
-// };
-
-// export default LiquorInfo;
-
 import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/cartSlice";
+// import { addToCart } from "../../redux/cartSlice";
+import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
 import Layout from "../../components/layout/Layout";
 function LiquorInfo() {
