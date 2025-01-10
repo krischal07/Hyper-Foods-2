@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
@@ -78,9 +78,15 @@ function AllProducts() {
       });
     }
     setFilteredProducts(filtered);
-    // setPrices(filtered.map((item) => item.price));
-    // setActiveOptions(filtered.map(() => "Room Temperature"));
+    setCurrentPage(1);
   }, [filter, searchQuery, product]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(12);
+  const lastPostIndex = currentPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+  const currentPost = filteredProducts.slice(firstPostIndex, lastPostIndex);
+  const totalPages = Math.ceil(product.length / postPerPage);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -89,12 +95,6 @@ function AllProducts() {
       setFilter(filterFromUrl);
     }
   }, [location]);
-
-  // useEffect(() => {
-  //   setPrices(product.map((item) => item.price));
-  //   setActiveOptions(product.map(() => "Room Temperature"));
-  //   console.log("prices are loaded");
-  // }, [product]);
 
   useEffect(() => {
     const updatedPrices = filteredProducts.map((item, index) => {
@@ -121,6 +121,9 @@ function AllProducts() {
     });
   };
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-8 md:py-16 mx-auto">
@@ -203,7 +206,7 @@ function AllProducts() {
         </div>
 
         <div className="flex flex-wrap -m-4">
-          {filteredProducts.map((item, index) => {
+          {currentPost.map((item, index) => {
             const { title, price, imageUrl, actualPrice } = item;
 
             return (
@@ -325,6 +328,23 @@ function AllProducts() {
             );
           })}
         </div>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center mt-6">
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button
+            key={page}
+            className={`px-3 py-1 mx-1 my-2 rounded ${
+              currentPage === page
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-black"
+            }`}
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </button>
+        ))}
       </div>
     </section>
   );
